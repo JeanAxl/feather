@@ -1,0 +1,7 @@
+type BagSection {
+  name: String!
+}
+
+type Query {
+  bagSection: BagSection
+}

@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join } from 'path';
+import { BagSectionModule } from '../modules/bag-section/bag-section.module';
 
 @Module({
   imports: [
@@ -11,6 +11,7 @@ import { join } from 'path';
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
     }),
+    BagSectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
