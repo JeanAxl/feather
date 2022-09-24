@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "generate-graphql:backend": "nx generate-gql-types backend"
   },
   "private": true,
   "dependencies": {
@@ -13,12 +14,16 @@
     "@chakra-ui/react": "^2.3.4",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@nestjs/apollo": "^10.1.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/graphql": "^10.1.2",
     "@nestjs/platform-express": "^9.0.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "apollo-server-express": "^3.10.2",
     "core-js": "^3.6.5",
     "framer-motion": "^7.3.6",
+    "graphql": "^16.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.4",
@@ -26,6 +31,7 @@
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
     "rxjs": "^7.0.0",
+    "ts-morph": "^16.0.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
