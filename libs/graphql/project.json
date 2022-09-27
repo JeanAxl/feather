@@ -1,0 +1,33 @@
+{
+  "type": "library",
+  "sourceRoot": "libs/graphql/src",
+  "projectType": "library",
+  "prefix": "libeo",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/graphql",
+        "main": "libs/index.ts",
+        "tsConfig": "libs/graphql/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/graphql/src/**/*.{ts,tsx,js,jsx}"],
+        "maxWarnings": 0
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/frontend/shared/graphql/jest.config.js",
+        "tsConfig": "libs/frontend/shared/graphql/tsconfig.json",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:frontend"]
+}

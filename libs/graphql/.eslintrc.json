@@ -1,0 +1,15 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*", "__generated__", "**/*.generated.*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": "libs/graphql/tsconfig.json"
+      },
+      "rules": {
+        "unicorn/no-abusive-eslint-disable": "off"
+      }
+    }
+  ]
+}
