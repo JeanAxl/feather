@@ -5,3 +5,7 @@ type BagSection {
 type Query {
   bagSection: BagSection
 }
+
+type Mutation {
+  updateBagSection(name: String!): BagSection!
+}

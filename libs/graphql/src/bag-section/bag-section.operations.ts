@@ -7,3 +7,11 @@ gql`
     }
   }
 `;
+
+gql`
+  mutation updateBagSection($name: String!) {
+    updateBagSection(name: $name) {
+      name
+    }
+  }
+`;

@@ -16,4 +16,8 @@ export abstract class IQuery {
     abstract bagSection(): Nullable<BagSection> | Promise<Nullable<BagSection>>;
 }
 
+export abstract class IMutation {
+    abstract updateBagSection(name: string): BagSection | Promise<BagSection>;
+}
+
 type Nullable<T> = T | null;

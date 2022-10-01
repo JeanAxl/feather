@@ -8,22 +8,23 @@ import {
   updateItemInBag,
 } from '../infrastructure/bag-section.reducer';
 import { BagSectionComponent } from './bag-section.presentation';
-import { graphqlClient } from '../../../shared/graphql/client';
+import { TestComponent } from './components/test.component';
 
 export const BagSectionContainer: FunctionComponent = () => {
   const bagSection = useAppSelector(selectBagSection);
   const dispatch = useAppDispatch();
 
-  const data = useBagSectionQuery<BagSectionQuery>(graphqlClient);
-
-  console.log(data);
-
   return (
-    <BagSectionComponent
-      bagSection={bagSection}
-      addItemInBag={(item) => dispatch(addItemInBag(item))}
-      updateItemInBag={(id, input) => dispatch(updateItemInBag({ id, input }))}
-      deleteItemInBag={(id) => dispatch(deleteItemInBag(id))}
-    />
+    <>
+      <TestComponent></TestComponent>
+      <BagSectionComponent
+        bagSection={bagSection}
+        addItemInBag={(item) => dispatch(addItemInBag(item))}
+        updateItemInBag={(id, input) =>
+          dispatch(updateItemInBag({ id, input }))
+        }
+        deleteItemInBag={(id) => dispatch(deleteItemInBag(id))}
+      />
+    </>
   );
 };

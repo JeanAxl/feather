@@ -17,6 +17,16 @@ export type BagSection = {
   name: Scalars['String'];
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  updateBagSection: BagSection;
+};
+
+
+export type MutationUpdateBagSectionArgs = {
+  name: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   bagSection?: Maybe<BagSection>;
