@@ -1,5 +1,5 @@
 schema: http://localhost:3333/graphql
-documents: './libs/graphql/src/**/*.operations.ts'
+documents: './libs/graphql/src/**/**.{query,mutation,subscription}.ts'
 generates:
   libs/graphql/src/types.ts:
     plugins:

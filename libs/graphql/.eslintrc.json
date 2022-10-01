@@ -1,15 +1,18 @@
 {
-  "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "__generated__", "**/*.generated.*"],
+  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
       "files": ["*.ts", "*.tsx"],
-      "parserOptions": {
-        "project": "libs/graphql/tsconfig.json"
-      },
-      "rules": {
-        "unicorn/no-abusive-eslint-disable": "off"
-      }
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
     }
   ]
 }

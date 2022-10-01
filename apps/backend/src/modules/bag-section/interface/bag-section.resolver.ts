@@ -8,9 +8,9 @@ import {
 @Resolver('BagSection')
 export class BagSectionResolver {
   constructor(private readonly queryBus: QueryBus) {}
-  private bagSection = { name: 'Module bouffe' };
-  @Query('bagSection')
-  async getBagSection() {
+
+  @Query()
+  async bagSection() {
     const result = await this.queryBus.execute<
       GetBagSectionQuery,
       GetBagSectionQueryResult
@@ -20,7 +20,6 @@ export class BagSectionResolver {
 
   @Mutation('updateBagSection')
   async updateBagSection() {
-    this.bagSection.name = 'Some new name' + new Date().toString();
-    return this.bagSection;
+    return { name: 'Some new name' + new Date().toString() };
   }
 }

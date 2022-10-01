@@ -6,7 +6,7 @@
     "generate-gql-types": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "yarn ts-node libs/graphql/src/generate-gql-types.ts"
+        "command": "yarn ts-node tools/graphql/generate-gql-types.ts"
       }
     },
     "build": {
