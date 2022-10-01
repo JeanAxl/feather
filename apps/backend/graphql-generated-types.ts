@@ -8,12 +8,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class Item {
+    id: string;
+    name: string;
+    description: string;
+    quantity: number;
+    weight: number;
+}
+
 export class BagSection {
     name: string;
+    items: Item[];
 }
 
 export abstract class IQuery {
-    abstract bagSection(): Nullable<BagSection> | Promise<Nullable<BagSection>>;
+    abstract bagSection(): BagSection | Promise<BagSection>;
 }
 
 export abstract class IMutation {

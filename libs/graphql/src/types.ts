@@ -14,7 +14,17 @@ export type Scalars = {
 
 export type BagSection = {
   __typename?: 'BagSection';
+  items: Array<Item>;
   name: Scalars['String'];
+};
+
+export type Item = {
+  __typename?: 'Item';
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  weight: Scalars['Int'];
 };
 
 export type Mutation = {
@@ -29,5 +39,5 @@ export type MutationUpdateBagSectionArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  bagSection?: Maybe<BagSection>;
+  bagSection: BagSection;
 };

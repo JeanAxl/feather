@@ -4,6 +4,13 @@ gql`
   query bagSection {
     bagSection {
       name
+      items {
+        id
+        name
+        description
+        quantity
+        weight
+      }
     }
   }
 `;

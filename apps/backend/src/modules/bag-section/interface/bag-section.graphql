@@ -1,9 +1,17 @@
+type Item {
+  id: ID!
+  name: String!
+  description: String!
+  quantity: Int!
+  weight: Int!
+}
 type BagSection {
   name: String!
+  items: [Item!]!
 }
 
 type Query {
-  bagSection: BagSection
+  bagSection: BagSection!
 }
 
 type Mutation {

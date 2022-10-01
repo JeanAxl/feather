@@ -10,13 +10,20 @@ function fetcher<TData, TVariables>(client: GraphQLClient, query: string, variab
 export type BagSectionQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type BagSectionQuery = { __typename?: 'Query', bagSection?: { __typename?: 'BagSection', name: string } | null };
+export type BagSectionQuery = { __typename?: 'Query', bagSection: { __typename?: 'BagSection', name: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } };
 
 
 export const BagSectionDocument = `
     query bagSection {
   bagSection {
     name
+    items {
+      id
+      name
+      description
+      quantity
+      weight
+    }
   }
 }
     `;
