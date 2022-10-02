@@ -34,10 +34,14 @@ export type Mutation = {
 
 
 export type MutationUpdateBagSectionArgs = {
-  name: Scalars['String'];
+  input?: InputMaybe<UpdateBagSectionInput>;
 };
 
 export type Query = {
   __typename?: 'Query';
   bagSection: BagSection;
+};
+
+export type UpdateBagSectionInput = {
+  name?: InputMaybe<Scalars['String']>;
 };

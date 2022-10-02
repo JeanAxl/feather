@@ -14,6 +14,10 @@ type Query {
   bagSection: BagSection!
 }
 
+input UpdateBagSectionInput {
+  name: String
+}
+
 type Mutation {
-  updateBagSection(name: String!): BagSection!
+  updateBagSection(input: UpdateBagSectionInput): BagSection!
 }

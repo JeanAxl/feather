@@ -7,7 +7,7 @@ function fetcher<TData, TVariables>(client: GraphQLClient, query: string, variab
   return async (): Promise<TData> => client.request<TData, TVariables>(query, variables, headers);
 }
 export type UpdateBagSectionMutationVariables = Types.Exact<{
-  name: Types.Scalars['String'];
+  input?: Types.InputMaybe<Types.UpdateBagSectionInput>;
 }>;
 
 
@@ -15,8 +15,8 @@ export type UpdateBagSectionMutation = { __typename?: 'Mutation', updateBagSecti
 
 
 export const UpdateBagSectionDocument = `
-    mutation updateBagSection($name: String!) {
-  updateBagSection(name: $name) {
+    mutation updateBagSection($input: UpdateBagSectionInput) {
+  updateBagSection(input: $input) {
     name
   }
 }

@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { queryHandlers } from './core/application/bag-section.application';
+import {
+  commandHandlers,
+  queryHandlers,
+} from './core/application/bag-section.application';
 import { bagSectionInfrastructure } from './infrastructure/bag-section.infrastructure';
 import { BagSectionResolver } from './interface/bag-section.resolver';
 
@@ -9,6 +12,7 @@ import { BagSectionResolver } from './interface/bag-section.resolver';
   providers: [
     BagSectionResolver,
     ...queryHandlers,
+    ...commandHandlers,
     ...bagSectionInfrastructure.providers,
   ],
 })

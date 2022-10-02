@@ -8,6 +8,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class UpdateBagSectionInput {
+    name?: Nullable<string>;
+}
+
 export class Item {
     id: string;
     name: string;
@@ -26,7 +30,7 @@ export abstract class IQuery {
 }
 
 export abstract class IMutation {
-    abstract updateBagSection(name: string): BagSection | Promise<BagSection>;
+    abstract updateBagSection(input?: Nullable<UpdateBagSectionInput>): BagSection | Promise<BagSection>;
 }
 
 type Nullable<T> = T | null;
