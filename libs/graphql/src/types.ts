@@ -27,6 +27,14 @@ export type Item = {
   weight: Scalars['Int'];
 };
 
+export type ItemInput = {
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  quantity: Scalars['Int'];
+  weight: Scalars['Int'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   updateBagSection: BagSection;
@@ -43,5 +51,6 @@ export type Query = {
 };
 
 export type UpdateBagSectionInput = {
+  items: Array<InputMaybe<ItemInput>>;
   name?: InputMaybe<Scalars['String']>;
 };

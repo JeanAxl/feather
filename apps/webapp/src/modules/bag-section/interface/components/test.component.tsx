@@ -29,7 +29,7 @@ export const TestComponent: FunctionComponent = () => {
       {isSuccess && data?.bagSection?.name}
       <Button
         onClick={() => {
-          mutation.mutate({ name: 'New name' });
+          mutation.mutate({ input: { name: 'New name', items: [] } });
         }}
       >
         Update

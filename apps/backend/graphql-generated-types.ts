@@ -8,8 +8,17 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class ItemInput {
+    id: string;
+    name: string;
+    description: string;
+    quantity: number;
+    weight: number;
+}
+
 export class UpdateBagSectionInput {
     name?: Nullable<string>;
+    items: Nullable<ItemInput>[];
 }
 
 export class Item {

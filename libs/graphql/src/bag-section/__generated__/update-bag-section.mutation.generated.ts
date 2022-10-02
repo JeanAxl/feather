@@ -11,13 +11,20 @@ export type UpdateBagSectionMutationVariables = Types.Exact<{
 }>;
 
 
-export type UpdateBagSectionMutation = { __typename?: 'Mutation', updateBagSection: { __typename?: 'BagSection', name: string } };
+export type UpdateBagSectionMutation = { __typename?: 'Mutation', updateBagSection: { __typename?: 'BagSection', name: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } };
 
 
 export const UpdateBagSectionDocument = `
     mutation updateBagSection($input: UpdateBagSectionInput) {
   updateBagSection(input: $input) {
     name
+    items {
+      id
+      name
+      description
+      quantity
+      weight
+    }
   }
 }
     `;
