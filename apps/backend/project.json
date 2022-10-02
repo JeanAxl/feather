@@ -16,7 +16,7 @@
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/backend",
-        "main": "apps/backend/src/main.ts",
+        "main": "apps/backend/src/main.firebase.ts",
         "tsConfig": "apps/backend/tsconfig.app.json",
         "assets": [
           {
