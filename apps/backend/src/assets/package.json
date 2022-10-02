@@ -1,19 +1,11 @@
 {
-  "name": "feather",
+  "main": "main.js",
+  "engines": {
+    "node": "16"
+  },
+  "name": "feather-backend",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test",
-    "generate-graphql": "nx generate-gql-types backend",
-    "fb:build": "",
-    "fb:serve": "firebase serve --only functions",
-    "fb:shell": "firebase functions:shell",
-    "fb:start": "npm run fb:shell",
-    "fb:deploy": "firebase deploy --only functions",
-    "fb:logs": "firebase functions:log"
-  },
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.0.10",

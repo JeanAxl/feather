@@ -18,7 +18,18 @@
         "outputPath": "dist/apps/backend",
         "main": "apps/backend/src/main.ts",
         "tsConfig": "apps/backend/tsconfig.app.json",
-        "assets": ["apps/backend/src/assets"]
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/backend/src/assets",
+            "output": "./"
+          },
+          {
+            "input": "apps/backend/src",
+            "glob": "**/*.graphql",
+            "output": "graphql/"
+          }
+        ]
       },
       "configurations": {
         "production": {
