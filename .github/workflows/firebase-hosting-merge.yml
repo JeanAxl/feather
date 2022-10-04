@@ -12,9 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn && yarn nx build webapp
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FEATHER_22710 }}'
-          channelId: live
-          projectId: feather-22710
+      - name: Deploy
+        run: firebase deploy --only functions $FIREBASE_TOKEN
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
