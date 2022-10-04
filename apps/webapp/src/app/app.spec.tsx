@@ -1,27 +1,25 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom';
+import { store } from '../shared/redux/store';
 
 import App from './app';
+const queryClient = new QueryClient();
 
 describe('App', () => {
   it('should render successfully', () => {
     const { baseElement } = render(
       <BrowserRouter>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </QueryClientProvider>
       </BrowserRouter>
     );
 
     expect(baseElement).toBeTruthy();
-  });
-
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
-
-    expect(getByText(/Welcome webapp/gi)).toBeTruthy();
   });
 });
