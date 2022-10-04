@@ -1,7 +1,7 @@
 {
   "functions": [
     {
-      "source": "dist/apps/backend",
+      "source": "dist/apps/firebase/backend",
       "codebase": "default",
       "ignore": [
         "node_modules",
@@ -21,11 +21,7 @@
   },
   "hosting": {
     "public": "dist/apps/webapp",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
