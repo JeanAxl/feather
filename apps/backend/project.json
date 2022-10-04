@@ -9,6 +9,7 @@
         "command": "yarn ts-node tools/graphql/generate-gql-types.ts"
       }
     },
+
     "build": {
       "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
@@ -16,7 +17,7 @@
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/backend",
-        "main": "apps/backend/src/main.firebase.ts",
+        "main": "apps/backend/src/main.ts",
         "tsConfig": "apps/backend/tsconfig.app.json",
         "assets": [
           {
@@ -33,6 +34,19 @@
       },
       "configurations": {
         "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/backend/src/environments/environment.ts",
+              "with": "apps/backend/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "firebase": {
+          "outputPath": "dist/apps/firebase/backend",
+          "main": "apps/backend/src/main.firebase.ts",
           "optimization": true,
           "extractLicenses": true,
           "inspect": false,

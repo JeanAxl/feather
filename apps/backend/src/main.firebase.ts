@@ -24,7 +24,9 @@ export const createApp = async (expressInstance) => {
 createApp(server)
   .then((appServer) => {
     appServer.init();
-    Logger.log(`🚀 Application is running on: http://localhost:${port}`);
+    Logger.log(
+      `🚀 Firebase application is running on: http://localhost:${port}`
+    );
   })
   .catch((error) => {
     console.log(error);
