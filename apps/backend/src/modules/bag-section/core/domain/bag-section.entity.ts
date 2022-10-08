@@ -1,6 +1,6 @@
 import { Item } from './item.entity';
 
-export class BagSection {
+export type BagSection = {
   name: string;
   items: Item[];
-}
+};
