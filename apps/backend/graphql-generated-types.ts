@@ -40,6 +40,8 @@ export abstract class IQuery {
 
 export abstract class IMutation {
     abstract updateBagSection(input?: Nullable<UpdateBagSectionInput>): BagSection | Promise<BagSection>;
+
+    abstract deleteItemInBagSection(itemId: string): boolean | Promise<boolean>;
 }
 
 type Nullable<T> = T | null;

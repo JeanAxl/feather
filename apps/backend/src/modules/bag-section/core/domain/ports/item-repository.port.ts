@@ -1,5 +1,5 @@
 import { Item } from '../item.entity';
 
-export interface ItemRepositoryPort {
-  delete(itemId: Item['id']): Promise<void>;
+export abstract class ItemRepositoryPort {
+  public abstract delete(itemId: Item['id']): Promise<void>;
 }

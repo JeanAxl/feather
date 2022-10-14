@@ -10,6 +10,10 @@ import {
   UpdateBagSectionCommandResult,
 } from '../core/application/commands/update-bag-section/update-bag-section.command';
 import { GraphQLReturn } from '../../../../graphql-return.type';
+import {
+  DeleteItemInBagSectionCommand,
+  DeleteItemInBagSectionCommandResult,
+} from '../core/application/commands/delete-item-in-bag-section/delete-item-in-bag-section.command';
 
 @Resolver('BagSection')
 export class BagSectionResolver {
@@ -41,13 +45,13 @@ export class BagSectionResolver {
 
   @Mutation('deleteItemInBagSection')
   async deleteItemInBagSection(
-    @Args('input') input: DeleteItemInbagSectionInput
+    @Args('itemId') itemId: string
   ): Promise<GraphQLReturn<'deleteItemInBagSection'>> {
-    const result = await this.commandBus.execute<
+    await this.commandBus.execute<
       DeleteItemInBagSectionCommand,
       DeleteItemInBagSectionCommandResult
-    >(new DeleteItemInBagSectionCommand(input));
+    >(new DeleteItemInBagSectionCommand({ itemId }));
 
-    return result.bagSection;
+    return true;
   }
 }
