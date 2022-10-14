@@ -27,6 +27,7 @@
     "@nestjs/cqrs": "^9.0.1",
     "@nestjs/graphql": "^10.1.2",
     "@nestjs/platform-express": "^9.1.2",
+    "@nestjs/typeorm": "^9.0.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@tanstack/react-query": "^4.6.0",
     "apollo-server-express": "^3.10.2",
