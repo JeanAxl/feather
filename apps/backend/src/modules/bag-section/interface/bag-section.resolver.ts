@@ -31,11 +31,22 @@ export class BagSectionResolver {
   async updateBagSection(
     @Args('input') input: UpdateBagSectionInput
   ): Promise<GraphQLReturn<'updateBagSection'>> {
-    console.log(input);
     const result = await this.commandBus.execute<
       UpdateBagSectionCommand,
       UpdateBagSectionCommandResult
     >(new UpdateBagSectionCommand(input));
+
+    return result.bagSection;
+  }
+
+  @Mutation('deleteItemInBagSection')
+  async deleteItemInBagSection(
+    @Args('input') input: DeleteItemInbagSectionInput
+  ): Promise<GraphQLReturn<'deleteItemInBagSection'>> {
+    const result = await this.commandBus.execute<
+      DeleteItemInBagSectionCommand,
+      DeleteItemInBagSectionCommandResult
+    >(new DeleteItemInBagSectionCommand(input));
 
     return result.bagSection;
   }

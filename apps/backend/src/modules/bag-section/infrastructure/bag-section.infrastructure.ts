@@ -1,11 +1,11 @@
-import { StoragePort } from '../core/domain/ports/storage.port';
-import { StorageAdapter } from './storage.adapter';
+import { BagSectionRepositoryPort } from '../core/domain/ports/bag-section-repositopry.port';
+import { BagSectionInMemoryRepository } from './bag-section.in-memory-repository';
 
 export const bagSectionInfrastructure = {
   providers: [
     {
-      provide: StoragePort,
-      useClass: StorageAdapter,
+      provide: BagSectionRepositoryPort,
+      useClass: BagSectionInMemoryRepository,
     },
   ],
 };

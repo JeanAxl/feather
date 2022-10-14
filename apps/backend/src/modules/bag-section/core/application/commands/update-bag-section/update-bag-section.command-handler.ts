@@ -1,5 +1,5 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { StoragePort } from '../../../domain/ports/storage.port';
+import { BagSectionRepositoryPort } from '../../../domain/ports/bag-section-repositopry.port';
 import {
   UpdateBagSectionCommand,
   UpdateBagSectionCommandResult,
@@ -7,14 +7,14 @@ import {
 
 @CommandHandler(UpdateBagSectionCommand)
 export class UpdateBagSectionCommandHandler implements ICommandHandler {
-  constructor(private readonly storagePort: StoragePort) {}
+  constructor(
+    private readonly bagSectionRepository: BagSectionRepositoryPort
+  ) {}
 
   public async execute({
     payload,
   }: UpdateBagSectionCommand): Promise<UpdateBagSectionCommandResult> {
-    this.storagePort.updateBagSection(payload);
-    console.log(this.storagePort.getBagSection());
-    console.log(payload);
-    return { bagSection: this.storagePort.getBagSection() };
+    await this.bagSectionRepository.updateBagSection(payload);
+    return { bagSection: await this.bagSectionRepository.getBagSection() };
   }
 }
