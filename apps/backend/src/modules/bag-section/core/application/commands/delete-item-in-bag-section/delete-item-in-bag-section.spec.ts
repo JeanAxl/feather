@@ -1,4 +1,4 @@
-import { ItemInMemoryRepository } from '../../../../infrastructure/item.in-memory-repository';
+import { ItemInMemoryRepository } from '../../../../infrastructure/in-memory/item.in-memory-repository';
 import { DeleteItemInBagSectionCommand } from './delete-item-in-bag-section.command';
 import { DeleteItemInBagSectionCommandHandler } from './delete-item-in-bag-section.command-handler';
 

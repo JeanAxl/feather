@@ -1,9 +1,9 @@
-import { BagSection } from '../core/domain/bag-section.entity';
+import { BagSection } from '../../core/domain/bag-section.entity';
 import * as uuid from 'uuid';
 import {
   BagSectionRepositoryPort,
   UpdateBagSectionInput,
-} from '../core/domain/ports/bag-section-repositopry.port';
+} from '../../core/domain/ports/bag-section-repositopry.port';
 
 export class BagSectionInMemoryRepository implements BagSectionRepositoryPort {
   private bagSection = {
