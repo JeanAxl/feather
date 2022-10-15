@@ -1,10 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class ItemTypeOrmEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
-  
+  id: string;
+
   @Column()
   name: string;
 
@@ -15,5 +15,5 @@ export class ItemTypeOrmEntity {
   quantity: number;
 
   @Column()
-  weight: number
+  weight: number;
 }
