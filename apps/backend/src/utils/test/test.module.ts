@@ -2,6 +2,7 @@ import { Module, ModuleMetadata } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, QueryRunner } from 'typeorm';
+import { BagSectionTypeOrmEntity } from '../../modules/bag-section/infrastructure/typeorm/bag-section/bag-section.typeorm-entity';
 import { ItemTypeOrmEntity } from '../../modules/bag-section/infrastructure/typeorm/item/item.typeorm-entity';
 
 @Module({
@@ -10,7 +11,7 @@ import { ItemTypeOrmEntity } from '../../modules/bag-section/infrastructure/type
       type: 'sqlite',
       database: ':memory:',
       dropSchema: true,
-      entities: [ItemTypeOrmEntity],
+      entities: [ItemTypeOrmEntity, BagSectionTypeOrmEntity],
       synchronize: true,
       keepConnectionAlive: false,
     }),
@@ -35,18 +36,18 @@ export const loadFixtures = async (
         const entitiesToSave = repository.create(fixture.items);
         await queryRunner.manager.save(entitiesToSave);
       } catch (error) {
-        console.log(error);
         throw new Error(
-          `Error on loading fixture > Failed to load fixtures for entity "${
-            fixture.tableName
-          }" , "${JSON.stringify(fixture.items)}`
+          `Error on loading fixture > Failed to load fixtures
+Message : ${error}
+Table name : ${fixture.tableName} 
+Fixtures : "${JSON.stringify(fixture.items)}`
         );
       }
     }
     await queryRunner.commitTransaction();
   } catch (error) {
     await queryRunner.rollbackTransaction();
-    throw new Error(`Failed to setup fixtures ! Got error: ${error}`);
+    throw new Error(error);
   } finally {
     await queryRunner.release();
   }
