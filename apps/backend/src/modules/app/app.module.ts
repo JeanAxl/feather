@@ -3,6 +3,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { BagSectionModule } from '../bag-section/bag-section.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item.typeorm-entity';
+
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -13,9 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       type: 'sqlite',
       database: ':memory:',
       dropSchema: true,
-      synchornize: true,
-      entities: [],
-      autoloadEntities: true,
+      entities: [ItemTypeOrmEntity],
       keepConnectionAlive: false,
     }),
     BagSectionModule,

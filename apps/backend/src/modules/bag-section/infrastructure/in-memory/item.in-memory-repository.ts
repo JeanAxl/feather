@@ -1,5 +1,5 @@
-import { Item } from '../core/domain/item.entity';
-import { ItemRepositoryPort } from '../core/domain/ports/item-repository.port';
+import { Item } from "../../core/domain/item.entity";
+import { ItemRepositoryPort } from "../../core/domain/ports/item-repository.port";
 
 export class ItemInMemoryRepository implements ItemRepositoryPort {
   private _items: Item[] = [];
