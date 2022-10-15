@@ -3,6 +3,7 @@ import { BagSection } from '../../../domain/bag-section.entity';
 import { Item } from '../../../domain/item.entity';
 
 export type UpdateBagSectionCommandPayload = {
+  id: string;
   name?: string | null;
   items: Item[];
 };

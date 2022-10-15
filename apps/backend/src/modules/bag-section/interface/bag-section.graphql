@@ -11,7 +11,7 @@ type BagSection {
 }
 
 type Query {
-  bagSection: BagSection!
+  bagSection(id: ID!): BagSection!
 }
 
 input ItemInput {
@@ -23,11 +23,12 @@ input ItemInput {
 }
 
 input UpdateBagSectionInput {
+  id: String!
   name: String
   items: [ItemInput]!
 }
 
 type Mutation {
-  updateBagSection(input: UpdateBagSectionInput): BagSection!
+  updateBagSection(bagSectionId: ID, input: UpdateBagSectionInput): BagSection!
   deleteItemInBagSection(itemId: ID!): Boolean!
 }

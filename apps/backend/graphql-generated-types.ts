@@ -17,6 +17,7 @@ export class ItemInput {
 }
 
 export class UpdateBagSectionInput {
+    id: string;
     name?: Nullable<string>;
     items: Nullable<ItemInput>[];
 }
@@ -35,11 +36,11 @@ export class BagSection {
 }
 
 export abstract class IQuery {
-    abstract bagSection(): BagSection | Promise<BagSection>;
+    abstract bagSection(id: string): BagSection | Promise<BagSection>;
 }
 
 export abstract class IMutation {
-    abstract updateBagSection(input?: Nullable<UpdateBagSectionInput>): BagSection | Promise<BagSection>;
+    abstract updateBagSection(bagSectionId?: Nullable<string>, input?: Nullable<UpdateBagSectionInput>): BagSection | Promise<BagSection>;
 
     abstract deleteItemInBagSection(itemId: string): boolean | Promise<boolean>;
 }

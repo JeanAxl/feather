@@ -14,7 +14,8 @@ export class UpdateBagSectionCommandHandler implements ICommandHandler {
   public async execute({
     payload,
   }: UpdateBagSectionCommand): Promise<UpdateBagSectionCommandResult> {
-    await this.bagSectionRepository.updateBagSection(payload);
-    return { bagSection: await this.bagSectionRepository.getBagSection() };
+    const { id, ...input } = payload;
+    await this.bagSectionRepository.updateBagSection(id, { name: input.name });
+    return { bagSection: await this.bagSectionRepository.getBagSection(id) };
   }
 }

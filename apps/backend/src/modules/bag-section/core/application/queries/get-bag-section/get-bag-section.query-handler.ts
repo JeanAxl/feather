@@ -10,7 +10,10 @@ export class GetBagSectionQueryHandler implements IQueryHandler {
   constructor(
     private readonly bagSectionRepository: BagSectionRepositoryPort
   ) {}
-  public async execute(): Promise<GetBagSectionQueryResult> {
-    return this.bagSectionRepository.getBagSection();
+  public async execute({
+    payload,
+  }: GetBagSectionQuery): Promise<GetBagSectionQueryResult> {
+    const { id } = payload;
+    return this.bagSectionRepository.getBagSection(id);
   }
 }

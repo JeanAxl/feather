@@ -23,11 +23,13 @@ export class BagSectionResolver {
   ) {}
 
   @Query()
-  async bagSection(): Promise<GraphQLReturn<'bagSection'>> {
+  async bagSection(
+    @Args('id') id: string
+  ): Promise<GraphQLReturn<'bagSection'>> {
     const result = await this.queryBus.execute<
       GetBagSectionQuery,
       GetBagSectionQueryResult
-    >(new GetBagSectionQuery());
+    >(new GetBagSectionQuery({ id }));
     return result;
   }
 
