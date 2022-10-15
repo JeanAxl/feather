@@ -1,20 +1,12 @@
-import { INestApplication } from '@nestjs/common';
-import { Test } from '@nestjs/testing';
+import { testingModuleFactory } from '../../../../../../utils/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { UpdateBagSectionCommand } from './update-bag-section.command';
 import { UpdateBagSectionCommandHandler } from './update-bag-section.command-handler';
 describe('UpdateBagSectionCommandHandler', () => {
   let commandHandler: UpdateBagSectionCommandHandler;
-  let application: INestApplication;
   beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [BagSectionModule],
-    }).compile();
-
-    application = module.createNestApplication();
-    await application.init();
-
-    commandHandler = application.get(UpdateBagSectionCommandHandler);
+    const module = await testingModuleFactory([], [BagSectionModule]);
+    commandHandler = module.get(UpdateBagSectionCommandHandler);
   });
 
   it('should update the BagSection', async () => {
@@ -30,9 +22,11 @@ describe('UpdateBagSectionCommandHandler', () => {
         },
       ],
     };
+
     const result = await commandHandler.execute(
       new UpdateBagSectionCommand(newBagSection)
     );
+
     expect(result).toStrictEqual({ bagSection: newBagSection });
   });
 });
