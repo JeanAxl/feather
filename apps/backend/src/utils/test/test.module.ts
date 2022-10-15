@@ -2,7 +2,7 @@ import { Module, ModuleMetadata } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, QueryRunner } from 'typeorm';
-import { ItemTypeOrmEntity } from '../../modules/bag-section/infrastructure/typeorm/item.typeorm-entity';
+import { ItemTypeOrmEntity } from '../../modules/bag-section/infrastructure/typeorm/item/item.typeorm-entity';
 
 @Module({
   imports: [

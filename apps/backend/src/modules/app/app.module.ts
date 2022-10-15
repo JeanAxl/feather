@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { BagSectionModule } from '../bag-section/bag-section.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item.typeorm-entity';
+import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item/item.typeorm-entity';
 
 @Module({
   imports: [

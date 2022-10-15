@@ -6,7 +6,7 @@ import {
   queryHandlers,
 } from './core/application/bag-section.application';
 import { bagSectionInfrastructure } from './infrastructure/bag-section.infrastructure';
-import { ItemTypeOrmEntity } from './infrastructure/typeorm/item.typeorm-entity';
+import { ItemTypeOrmEntity } from './infrastructure/typeorm/item/item.typeorm-entity';
 import { BagSectionResolver } from './interface/bag-section.resolver';
 
 @Module({
