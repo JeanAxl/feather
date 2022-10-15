@@ -1,7 +1,7 @@
 import { Module, ModuleMetadata } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { QueryRunner } from 'typeorm';
+import { DataSource, QueryRunner } from 'typeorm';
 import { ItemTypeOrmEntity } from '../../modules/bag-section/infrastructure/typeorm/item.typeorm-entity';
 
 @Module({
@@ -53,13 +53,18 @@ export const loadFixtures = async (
 };
 
 export const testingModuleFactory = async (
-  providers: ModuleMetadata['providers'],
-  imports: ModuleMetadata['imports']
+  providers: ModuleMetadata['providers'] = [],
+  imports: ModuleMetadata['imports'] = [],
+  fixtures: Fixture[] = []
 ) => {
   const module = await Test.createTestingModule({
     providers: [...providers],
     imports: [TestingModule, ...imports],
   }).compile();
+
+  const dataSource = module.get(DataSource);
+  const queryRunner = dataSource.createQueryRunner();
+  await loadFixtures(queryRunner, fixtures);
 
   return module;
 };
