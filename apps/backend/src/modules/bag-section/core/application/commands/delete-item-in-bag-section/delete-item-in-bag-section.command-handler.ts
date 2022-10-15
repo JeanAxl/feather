@@ -13,6 +13,6 @@ export class DeleteItemInBagSectionCommandHandler implements ICommandHandler {
     payload,
   }: DeleteItemInBagSectionCommand): Promise<DeleteItemInBagSectionCommandResult> {
     const { itemId } = payload;
-    await this.itemRepository.delete(itemId);
+    await this.itemRepository.deleteItem(itemId);
   }
 }

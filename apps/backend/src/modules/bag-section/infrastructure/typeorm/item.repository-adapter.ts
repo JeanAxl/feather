@@ -1,9 +1,17 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { ItemRepositoryPort } from '../../core/domain/ports/item-repository.port';
-import { ItemRepository } from './item.typeorm-repository';
+import { ItemTypeOrmEntity } from './item.typeorm-entity';
 
+@Injectable()
 export class ItemRepositoryAdapter implements ItemRepositoryPort {
-  constructor(private readonly typeOrmRepository: ItemRepository) {}
-  public async delete(itemId: string): Promise<void> {
-    await this.typeOrmRepository.delete(itemId);
+  constructor(
+    @InjectRepository(ItemTypeOrmEntity)
+    private typeOrmRepository: Repository<ItemTypeOrmEntity>
+  ) {}
+
+  public async deleteItem(itemId: string): Promise<void> {
+    this.typeOrmRepository.delete(itemId);
   }
 }
