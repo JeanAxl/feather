@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BagSectionTypeOrmEntity } from '../bag-section/bag-section.typeorm-entity';
 
 @Entity()
 export class ItemTypeOrmEntity {
@@ -16,4 +23,8 @@ export class ItemTypeOrmEntity {
 
   @Column()
   weight: number;
+
+  @ManyToOne(() => BagSectionTypeOrmEntity)
+  @JoinColumn()
+  bagSection: BagSectionTypeOrmEntity;
 }
