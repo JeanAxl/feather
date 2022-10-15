@@ -45,8 +45,10 @@
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
     "rxjs": "^7.0.0",
+    "sqlite3": "^5.1.2",
     "ts-morph": "^16.0.0",
     "tslib": "^2.3.0",
+    "typeorm": "^0.3.10",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
