@@ -8,15 +8,6 @@ export const fixtures = [
       {
         id: '1',
         name: 'Some test name',
-        items: [
-          {
-            id: '1',
-            name: 'new test name',
-            description: 'test description',
-            quantity: 2,
-            weight: 42,
-          },
-        ],
       },
     ],
   },
@@ -25,11 +16,27 @@ export const fixtures = [
     items: [
       {
         id: '1',
+        description: 'MSR - Hubba Hubba NX',
+        name: 'Tente 2 places',
+        quantity: 1,
+        weight: 1,
         bagSection: '1',
-        name: 'new test name',
-        description: 'test description',
-        quantity: 2,
-        weight: 42,
+      },
+      {
+        id: '2',
+        description: 'MSR - Universal footprint',
+        name: 'Footprint',
+        quantity: 1,
+        weight: 1,
+        bagSection: '1',
+      },
+      {
+        id: '3',
+        description: 'Thermarest - Z Lite',
+        name: 'Tapis de sol',
+        quantity: 1,
+        weight: 1,
+        bagSection: '1',
       },
     ],
   },
