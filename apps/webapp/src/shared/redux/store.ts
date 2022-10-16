@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { bagSectionReducer } from '../../modules/bag-section/infrastructure/bag-section.reducer';
+import { bagSectionReducer } from '../../modules/bag-section/infrastructure/redux/bag-section.reducer';
 
 export const store = configureStore({
   reducer: {
-    bagSection: bagSectionReducer
-  }
+    bagSection: bagSectionReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

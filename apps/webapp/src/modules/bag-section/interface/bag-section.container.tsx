@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { BagSectionQuery, useBagSectionQuery } from '@feather/graphql-client';
 import { useAppDispatch, useAppSelector } from '../../../shared/redux/hooks';
+
+import { BagSectionComponent } from './bag-section.presentation';
+import { TestComponent } from './components/test.component';
 import {
   addItemInBag,
   deleteItemInBag,
   selectBagSection,
   updateItemInBag,
-} from '../infrastructure/bag-section.reducer';
-import { BagSectionComponent } from './bag-section.presentation';
-import { TestComponent } from './components/test.component';
+} from '../infrastructure/redux/bag-section.reducer';
 
 export const BagSectionContainer: FunctionComponent = () => {
   const bagSection = useAppSelector(selectBagSection);

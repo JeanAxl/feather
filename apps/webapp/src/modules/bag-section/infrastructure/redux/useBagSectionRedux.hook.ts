@@ -1,11 +1,11 @@
 import { useReducer } from 'react';
-import { BagSection, bagSectionFixtureFactory } from '../core/bag.model';
-import { Item } from '../core/item.model';
+import { BagSection, bagSectionFixtureFactory } from '../../core/bag.model';
+import { Item } from '../../core/item.model';
 
 enum ACTIONS {
   ADD_ITEM = 'ADD_ITEM',
   UPDATE_ITEM = 'UDPATE_ITEM',
-  DELETE_ITEM = 'DELETE_ITEM'
+  DELETE_ITEM = 'DELETE_ITEM',
 }
 
 type AddItemActions = {
@@ -52,8 +52,11 @@ const reducer = (state: BagSection, action: ActionType) => {
   }
 };
 
-export const useBagSection = () => {
-  const [bagSection, dispatch] = useReducer(reducer, bagSectionFixtureFactory());
+export const useBagSectionRedux = () => {
+  const [bagSection, dispatch] = useReducer(
+    reducer,
+    bagSectionFixtureFactory()
+  );
 
   const addItemInBag = (item: Item) => {
     dispatch({ type: ACTIONS.ADD_ITEM, payload: item });

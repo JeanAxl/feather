@@ -1,9 +1,9 @@
-import { bagSectionFixtureFactory } from '../core/bag.model';
-import { itemFixtureFactory } from '../core/item.model';
+import { bagSectionFixtureFactory } from '../../core/bag.model';
+import { itemFixtureFactory } from '../../core/item.model';
 import { addItemInBag, bagSectionReducer } from './bag-section.reducer';
 
 const initialState = {
-  value: bagSectionFixtureFactory()
+  value: bagSectionFixtureFactory(),
 };
 const itemToAdd = itemFixtureFactory();
 
