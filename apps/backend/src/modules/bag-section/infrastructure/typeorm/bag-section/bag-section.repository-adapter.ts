@@ -13,7 +13,10 @@ export class BagSectionRepositoryAdapter implements BagSectionRepositoryPort {
   ) {}
 
   public async getBagSection(id: BagSection['id']): Promise<BagSection | null> {
-    return this.typeOrmRepository.findOneBy({ id });
+    return this.typeOrmRepository.findOne({
+      where: { id },
+      relations: ['items'],
+    });
   }
 
   public async updateBagSection(

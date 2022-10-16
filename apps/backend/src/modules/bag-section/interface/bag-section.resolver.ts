@@ -30,19 +30,19 @@ export class BagSectionResolver {
       GetBagSectionQuery,
       GetBagSectionQueryResult
     >(new GetBagSectionQuery({ id }));
-    return { ...result, items: [] };
+    return { ...result };
   }
 
-  @Mutation('updateBagSection')
+  @Mutation()
   async updateBagSection(
     @Args('input') input: UpdateBagSectionInput
-  ): Promise<GraphQLReturn<'updateBagSection'>> {
-    const result = await this.commandBus.execute<
+  ): Promise<boolean> {
+    await this.commandBus.execute<
       UpdateBagSectionCommand,
       UpdateBagSectionCommandResult
     >(new UpdateBagSectionCommand(input));
 
-    return result.bagSection;
+    return true;
   }
 
   @Mutation('deleteItemInBagSection')
