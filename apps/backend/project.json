@@ -3,7 +3,7 @@
   "sourceRoot": "apps/backend/src",
   "projectType": "application",
   "targets": {
-    "generate-gql-types": {
+    "generate-gql-backend": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "command": "yarn ts-node tools/graphql/generate-gql-types.ts"

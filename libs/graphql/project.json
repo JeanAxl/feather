@@ -4,6 +4,12 @@
   "projectType": "library",
   "prefix": "libeo",
   "targets": {
+    "generate-gql-lib": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "yarn graphql-code-generator --config libs/graphql/codegen.yaml"
+      }
+    },
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
