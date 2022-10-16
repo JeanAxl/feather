@@ -9,7 +9,7 @@ import { ItemTypeOrmEntity } from '../../modules/bag-section/infrastructure/type
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: ':memory:',
+      database: ':test:',
       dropSchema: true,
       entities: [ItemTypeOrmEntity, BagSectionTypeOrmEntity],
       synchronize: true,

@@ -4,6 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { BagSectionModule } from '../bag-section/bag-section.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item/item.typeorm-entity';
+import { BagSectionTypeOrmEntity } from '../bag-section/infrastructure/typeorm/bag-section/bag-section.typeorm-entity';
 
 @Module({
   imports: [
@@ -13,9 +14,10 @@ import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item/it
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: ':memory:',
+      database: ':serve:',
       dropSchema: true,
-      entities: [ItemTypeOrmEntity],
+      entities: [ItemTypeOrmEntity, BagSectionTypeOrmEntity],
+      synchronize: true,
       keepConnectionAlive: false,
     }),
     BagSectionModule,
