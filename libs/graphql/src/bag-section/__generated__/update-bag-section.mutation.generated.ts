@@ -6,39 +6,29 @@ import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 function fetcher<TData, TVariables>(client: GraphQLClient, query: string, variables?: TVariables, headers?: RequestInit['headers']) {
   return async (): Promise<TData> => client.request<TData, TVariables>(query, variables, headers);
 }
-export type UpdateBagSectionMutationVariables = Types.Exact<{
+export type UpdateSectionMutationVariables = Types.Exact<{
   input?: Types.InputMaybe<Types.UpdateBagSectionInput>;
 }>;
 
 
-export type UpdateBagSectionMutation = { __typename?: 'Mutation', updateBagSection: { __typename?: 'BagSection', name: string, id: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } };
+export type UpdateSectionMutation = { __typename?: 'Mutation', updateSection: boolean };
 
 
-export const UpdateBagSectionDocument = `
-    mutation updateBagSection($input: UpdateBagSectionInput) {
-  updateBagSection(input: $input) {
-    name
-    id
-    items {
-      id
-      name
-      description
-      quantity
-      weight
-    }
-  }
+export const UpdateSectionDocument = `
+    mutation updateSection($input: UpdateBagSectionInput) {
+  updateSection(input: $input)
 }
     `;
-export const useUpdateBagSectionMutation = <
+export const useUpdateSectionMutation = <
       TError = unknown,
       TContext = unknown
     >(
       client: GraphQLClient,
-      options?: UseMutationOptions<UpdateBagSectionMutation, TError, UpdateBagSectionMutationVariables, TContext>,
+      options?: UseMutationOptions<UpdateSectionMutation, TError, UpdateSectionMutationVariables, TContext>,
       headers?: RequestInit['headers']
     ) =>
-    useMutation<UpdateBagSectionMutation, TError, UpdateBagSectionMutationVariables, TContext>(
-      ['updateBagSection'],
-      (variables?: UpdateBagSectionMutationVariables) => fetcher<UpdateBagSectionMutation, UpdateBagSectionMutationVariables>(client, UpdateBagSectionDocument, variables, headers)(),
+    useMutation<UpdateSectionMutation, TError, UpdateSectionMutationVariables, TContext>(
+      ['updateSection'],
+      (variables?: UpdateSectionMutationVariables) => fetcher<UpdateSectionMutation, UpdateSectionMutationVariables>(client, UpdateSectionDocument, variables, headers)(),
       options
     );

@@ -1,6 +1,6 @@
 import {
   useBagSectionQuery,
-  useUpdateBagSectionMutation,
+  useUpdateSectionMutation,
 } from '@feather/graphql-client';
 import { useQueryClient } from '@tanstack/react-query';
 import { cp } from 'fs';
@@ -13,7 +13,7 @@ export const useBagSection = () => {
     id: '1',
   });
 
-  const mutation = useUpdateBagSectionMutation(graphqlClient, {
+  const mutation = useUpdateSectionMutation(graphqlClient, {
     onSuccess: () => {
       queryClient.invalidateQueries(['bagSection']);
     },

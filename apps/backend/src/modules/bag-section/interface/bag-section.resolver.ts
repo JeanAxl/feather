@@ -4,7 +4,6 @@ import {
   GetBagSectionQuery,
   GetBagSectionQueryResult,
 } from '../core/application/queries/get-bag-section/get-bag-section.query';
-import { UpdateBagSectionInput } from '../../../../graphql-generated-types';
 import {
   UpdateBagSectionCommand,
   UpdateBagSectionCommandResult,
@@ -14,6 +13,7 @@ import {
   DeleteItemInBagSectionCommand,
   DeleteItemInBagSectionCommandResult,
 } from '../core/application/commands/delete-item-in-bag-section/delete-item-in-bag-section.command';
+import { UpdateBagSectionInput } from '../../../../graphql-generated-types';
 
 @Resolver('BagSection')
 export class BagSectionResolver {
@@ -33,7 +33,7 @@ export class BagSectionResolver {
     return { ...result };
   }
 
-  @Mutation()
+  @Mutation('updateSection')
   async updateBagSection(
     @Args('input') input: UpdateBagSectionInput
   ): Promise<boolean> {
