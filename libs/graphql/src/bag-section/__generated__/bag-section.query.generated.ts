@@ -12,7 +12,7 @@ export type BagSectionQueryVariables = Types.Exact<{
 }>;
 
 
-export type BagSectionQuery = { __typename?: 'Query', bagSection: { __typename?: 'BagSection', id: string, name: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } };
+export type BagSectionQuery = { __typename?: 'Query', bagSection?: { __typename?: 'BagSection', id: string, name: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } | null };
 
 
 export const BagSectionDocument = `

@@ -6,29 +6,29 @@ import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 function fetcher<TData, TVariables>(client: GraphQLClient, query: string, variables?: TVariables, headers?: RequestInit['headers']) {
   return async (): Promise<TData> => client.request<TData, TVariables>(query, variables, headers);
 }
-export type UpdateSectionMutationVariables = Types.Exact<{
+export type UpdateBagSectionMutationVariables = Types.Exact<{
   input?: Types.InputMaybe<Types.UpdateBagSectionInput>;
 }>;
 
 
-export type UpdateSectionMutation = { __typename?: 'Mutation', updateSection: boolean };
+export type UpdateBagSectionMutation = { __typename?: 'Mutation', updateBagSection: boolean };
 
 
-export const UpdateSectionDocument = `
-    mutation updateSection($input: UpdateBagSectionInput) {
-  updateSection(input: $input)
+export const UpdateBagSectionDocument = `
+    mutation updateBagSection($input: UpdateBagSectionInput) {
+  updateBagSection(input: $input)
 }
     `;
-export const useUpdateSectionMutation = <
+export const useUpdateBagSectionMutation = <
       TError = unknown,
       TContext = unknown
     >(
       client: GraphQLClient,
-      options?: UseMutationOptions<UpdateSectionMutation, TError, UpdateSectionMutationVariables, TContext>,
+      options?: UseMutationOptions<UpdateBagSectionMutation, TError, UpdateBagSectionMutationVariables, TContext>,
       headers?: RequestInit['headers']
     ) =>
-    useMutation<UpdateSectionMutation, TError, UpdateSectionMutationVariables, TContext>(
-      ['updateSection'],
-      (variables?: UpdateSectionMutationVariables) => fetcher<UpdateSectionMutation, UpdateSectionMutationVariables>(client, UpdateSectionDocument, variables, headers)(),
+    useMutation<UpdateBagSectionMutation, TError, UpdateBagSectionMutationVariables, TContext>(
+      ['updateBagSection'],
+      (variables?: UpdateBagSectionMutationVariables) => fetcher<UpdateBagSectionMutation, UpdateBagSectionMutationVariables>(client, UpdateBagSectionDocument, variables, headers)(),
       options
     );

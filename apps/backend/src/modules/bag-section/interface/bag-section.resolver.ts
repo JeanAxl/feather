@@ -1,19 +1,19 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import {
-  GetBagSectionQuery,
-  GetBagSectionQueryResult,
-} from '../core/application/queries/get-bag-section/get-bag-section.query';
-import {
-  UpdateBagSectionCommand,
-  UpdateBagSectionCommandResult,
-} from '../core/application/commands/update-bag-section/update-bag-section.command';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { UpdateBagSectionInput } from '../../../../graphql-generated-types';
 import { GraphQLReturn } from '../../../../graphql-return.type';
 import {
   DeleteItemInBagSectionCommand,
   DeleteItemInBagSectionCommandResult,
 } from '../core/application/commands/delete-item-in-bag-section/delete-item-in-bag-section.command';
-import { UpdateBagSectionInput } from '../../../../graphql-generated-types';
+import {
+  UpdateBagSectionCommand,
+  UpdateBagSectionCommandResult,
+} from '../core/application/commands/update-bag-section/update-bag-section.command';
+import {
+  GetBagSectionQuery,
+  GetBagSectionQueryResult,
+} from '../core/application/queries/get-bag-section/get-bag-section.query';
 
 @Resolver('BagSection')
 export class BagSectionResolver {
@@ -33,7 +33,7 @@ export class BagSectionResolver {
     return { ...result };
   }
 
-  @Mutation('updateSection')
+  @Mutation()
   async updateBagSection(
     @Args('input') input: UpdateBagSectionInput
   ): Promise<boolean> {

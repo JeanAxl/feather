@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 gql`
-  mutation updateSection($input: UpdateBagSectionInput) {
-    updateSection(input: $input) 
+  mutation updateBagSection($input: UpdateBagSectionInput) {
+    updateBagSection(input: $input) {}
   }
 `;
