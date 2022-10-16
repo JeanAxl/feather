@@ -19,7 +19,6 @@ export class ItemInput {
 export class UpdateBagSectionInput {
     id: string;
     name?: Nullable<string>;
-    items: Nullable<ItemInput>[];
 }
 
 export class Item {

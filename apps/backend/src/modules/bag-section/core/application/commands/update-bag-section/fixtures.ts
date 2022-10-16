@@ -27,7 +27,7 @@ export const fixtures = [
         description: 'MSR - Universal footprint',
         name: 'Footprint',
         quantity: 1,
-        weight: 1,
+        weight: 1.9,
         bagSection: '1',
       },
       {

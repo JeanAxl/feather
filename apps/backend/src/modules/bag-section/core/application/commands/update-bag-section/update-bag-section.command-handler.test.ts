@@ -17,7 +17,7 @@ describe('UpdateBagSectionCommandHandler', () => {
 
   it('should update the BagSection', async () => {
     await commandHandler.execute(
-      new UpdateBagSectionCommand({ id: '1', name: 'newName', items: [] })
+      new UpdateBagSectionCommand({ id: '1', name: 'newName' })
     );
 
     const bagSection = await bagSectionRepository.findOneBy({ id: '1' });

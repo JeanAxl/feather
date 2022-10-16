@@ -18,12 +18,12 @@ export const useBagSection = () => {
       queryClient.invalidateQueries(['bagSection']);
     },
   });
+
   const updateBagSection = useCallback(() => {
     mutation.mutate({
       input: {
         id: '1',
         name: 'New name - ' + new Date().getTime(),
-        items: [],
       },
     });
   }, [mutation]);
