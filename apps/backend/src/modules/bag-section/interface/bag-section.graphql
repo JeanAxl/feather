@@ -12,7 +12,7 @@ type BagSection {
 }
 
 type Query {
-  bagSection(id: ID!): BagSection!
+  bagSection(id: ID!): BagSection
 }
 
 input ItemInput {

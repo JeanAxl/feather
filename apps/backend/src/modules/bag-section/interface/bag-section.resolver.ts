@@ -30,7 +30,7 @@ export class BagSectionResolver {
       GetBagSectionQuery,
       GetBagSectionQueryResult
     >(new GetBagSectionQuery({ id }));
-    return result;
+    return { ...result, items: [] };
   }
 
   @Mutation('updateBagSection')

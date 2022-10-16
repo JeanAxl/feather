@@ -37,7 +37,7 @@ export class BagSection {
 }
 
 export abstract class IQuery {
-    abstract bagSection(id: string): BagSection | Promise<BagSection>;
+    abstract bagSection(id: string): Nullable<BagSection> | Promise<Nullable<BagSection>>;
 }
 
 export abstract class IMutation {
