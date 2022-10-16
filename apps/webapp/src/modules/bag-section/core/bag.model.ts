@@ -1,9 +1,9 @@
 import { Item } from './item.model';
 
 export class BagSection {
-  constructor(private name: string, private content: Item[] = []) {}
+  constructor(private name: string, private items: Item[] = []) {}
   public setContent(content: Item[]) {
-    this.content = content;
+    this.items = content;
   }
 
   public getName() {
@@ -11,7 +11,7 @@ export class BagSection {
   }
 
   public getContent() {
-    return this.content;
+    return this.items;
   }
 
   public getTotalWeight() {
@@ -36,21 +36,21 @@ export const bagSectionFixtureFactory = (): BagSection => {
       description: 'MSR - Hubba Hubba NX',
       name: 'Tente 2 places',
       quantity: 1,
-      weight: 1.9
+      weight: 1.9,
     },
     {
       id: '2',
       description: 'MSR - Universal footprint',
       name: 'Footprint',
       quantity: 1,
-      weight: 1.9
+      weight: 1.9,
     },
     {
       id: '3',
       description: 'Thermarest - Z Lite',
       name: 'Tapis de sol',
       quantity: 1,
-      weight: 1.9
-    }
+      weight: 1.9,
+    },
   ]);
 };

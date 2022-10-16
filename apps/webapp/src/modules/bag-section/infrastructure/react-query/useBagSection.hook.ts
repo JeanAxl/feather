@@ -5,10 +5,11 @@ import {
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { graphqlClient } from '../../../../shared/graphql/client';
+import { BagSection } from '../../core/bag.model';
 
 export const useBagSection = () => {
   const queryClient = useQueryClient();
-  const { data, isSuccess } = useBagSectionQuery(graphqlClient, {
+  const { data, isSuccess, status } = useBagSectionQuery(graphqlClient, {
     id: '1',
   });
 
@@ -21,11 +22,15 @@ export const useBagSection = () => {
     mutation.mutate({
       input: {
         id: '1',
-        name: 'New name - ' + new Date().toString(),
+        name: 'New name - ' + new Date().getTime(),
         items: [],
       },
     });
   }, [mutation]);
 
-  return { data, isSuccess, updateBagSection };
+  const bagSection = data?.bagSection
+    ? new BagSection(data.bagSection.name, data.bagSection.items)
+    : null;
+
+  return { bagSection, isSuccess, status, updateBagSection };
 };

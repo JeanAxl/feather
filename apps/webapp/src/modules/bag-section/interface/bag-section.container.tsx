@@ -1,21 +1,23 @@
-import React, { FunctionComponent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../shared/redux/hooks';
+import { FunctionComponent } from 'react';
+import { useAppDispatch } from '../../../shared/redux/hooks';
 
-import { BagSectionComponent } from './bag-section.presentation';
+import { Button } from '@chakra-ui/react';
+import { useBagSection } from '../infrastructure/react-query/useBagSection.hook';
 import {
   addItemInBag,
   deleteItemInBag,
-  selectBagSection,
   updateItemInBag,
 } from '../infrastructure/redux/bag-section.reducer';
-import { useBagSection } from '../infrastructure/react-query/useBagSection.hook';
-import { Button } from '@chakra-ui/react';
+import { BagSectionComponent } from './bag-section.presentation';
 
 export const BagSectionContainer: FunctionComponent = () => {
-  const bagSection = useAppSelector(selectBagSection);
   const dispatch = useAppDispatch();
-  const { data, isSuccess, updateBagSection } = useBagSection();
-  console.log(data, isSuccess);
+  const { bagSection, updateBagSection } = useBagSection();
+
+  if (!bagSection) {
+    return null;
+  }
+
   return (
     <>
       <Button onClick={() => updateBagSection()}>Click biche</Button>

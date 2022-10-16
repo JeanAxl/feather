@@ -1,22 +1,22 @@
+import { DeleteIcon } from '@chakra-ui/icons';
 import {
-  Tbody,
-  Tr,
-  Td,
-  Flex,
-  Editable,
-  EditablePreview,
-  EditableInput,
-  Button,
   Box,
-  Spacer
+  Button,
+  Editable,
+  EditableInput,
+  EditablePreview,
+  Flex,
+  Spacer,
+  Tbody,
+  Td,
+  Tr,
 } from '@chakra-ui/react';
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { BagSection } from '../../core/bag.model';
 import { Item } from '../../core/item.model';
-import { DeleteIcon } from '@chakra-ui/icons';
 
 type Props = {
-  bagSectionContent: BagSection['content'];
+  bagSectionContent: BagSection['items'];
   updateItemInBag: (id: Item['id'], input: Partial<Item>) => void;
   deleteItemInBag: (id: Item['id']) => void;
 };
@@ -24,7 +24,7 @@ type Props = {
 export const TableBody: FunctionComponent<Props> = ({
   bagSectionContent,
   updateItemInBag,
-  deleteItemInBag
+  deleteItemInBag,
 }) => {
   return (
     <Tbody>
@@ -45,7 +45,8 @@ export const TableBody: FunctionComponent<Props> = ({
                   colorScheme="teal"
                   variant="ghost"
                   size="xs"
-                  onClick={() => deleteItemInBag(item.id)}>
+                  onClick={() => deleteItemInBag(item.id)}
+                >
                   <DeleteIcon />
                 </Button>
               </Box>
@@ -69,7 +70,7 @@ type EditableCellProps = {
 const EditableCell: FunctionComponent<EditableCellProps> = ({
   itemName,
   itemId,
-  updateItemInBag
+  updateItemInBag,
 }) => {
   return (
     <Editable isPreviewFocusable={true} defaultValue={itemName}>
@@ -77,7 +78,9 @@ const EditableCell: FunctionComponent<EditableCellProps> = ({
       <EditableInput
         placeholder="name"
         value={itemName}
-        onChange={(input) => updateItemInBag(itemId, { name: input.target.value })}
+        onChange={(input) =>
+          updateItemInBag(itemId, { name: input.target.value })
+        }
       />
     </Editable>
   );
