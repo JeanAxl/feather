@@ -6,6 +6,7 @@ type Item {
   weight: Int!
 }
 type BagSection {
+  id: ID!
   name: String!
   items: [Item!]!
 }

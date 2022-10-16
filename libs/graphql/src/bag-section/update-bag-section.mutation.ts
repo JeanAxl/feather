@@ -4,6 +4,7 @@ gql`
   mutation updateBagSection($input: UpdateBagSectionInput) {
     updateBagSection(input: $input) {
       name
+      id
       items {
         id
         name

@@ -7,15 +7,18 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 function fetcher<TData, TVariables>(client: GraphQLClient, query: string, variables?: TVariables, headers?: RequestInit['headers']) {
   return async (): Promise<TData> => client.request<TData, TVariables>(query, variables, headers);
 }
-export type BagSectionQueryVariables = Types.Exact<{ [key: string]: never; }>;
+export type BagSectionQueryVariables = Types.Exact<{
+  id: Types.Scalars['ID'];
+}>;
 
 
-export type BagSectionQuery = { __typename?: 'Query', bagSection: { __typename?: 'BagSection', name: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } };
+export type BagSectionQuery = { __typename?: 'Query', bagSection: { __typename?: 'BagSection', id: string, name: string, items: Array<{ __typename?: 'Item', id: string, name: string, description: string, quantity: number, weight: number }> } };
 
 
 export const BagSectionDocument = `
-    query bagSection {
-  bagSection {
+    query bagSection($id: ID!) {
+  bagSection(id: $id) {
+    id
     name
     items {
       id
@@ -32,12 +35,12 @@ export const useBagSectionQuery = <
       TError = unknown
     >(
       client: GraphQLClient,
-      variables?: BagSectionQueryVariables,
+      variables: BagSectionQueryVariables,
       options?: UseQueryOptions<BagSectionQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
     useQuery<BagSectionQuery, TError, TData>(
-      variables === undefined ? ['bagSection'] : ['bagSection', variables],
+      ['bagSection', variables],
       fetcher<BagSectionQuery, BagSectionQueryVariables>(client, BagSectionDocument, variables, headers),
       options
     );

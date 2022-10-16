@@ -31,6 +31,7 @@ export class Item {
 }
 
 export class BagSection {
+    id: string;
     name: string;
     items: Item[];
 }
