@@ -26,5 +26,8 @@ export class ItemTypeOrmEntity {
 
   @ManyToOne(() => BagSectionTypeOrmEntity)
   @JoinColumn()
-  bagSection: BagSectionTypeOrmEntity;
+  bagSection: BagSectionTypeOrmEntity | undefined | null;
+
+  @Column({ nullable: true })
+  bagSectionId: BagSectionTypeOrmEntity['id'];
 }

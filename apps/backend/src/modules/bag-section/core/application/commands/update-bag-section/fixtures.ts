@@ -20,7 +20,7 @@ export const fixtures = [
         name: 'Tente 2 places',
         quantity: 1,
         weight: 1,
-        bagSection: '1',
+        bagSectionId: '1',
       },
       {
         id: '2',
@@ -28,7 +28,7 @@ export const fixtures = [
         name: 'Footprint',
         quantity: 1,
         weight: 1.9,
-        bagSection: '1',
+        bagSectionId: '1',
       },
       {
         id: '3',
@@ -36,7 +36,7 @@ export const fixtures = [
         name: 'Tapis de sol',
         quantity: 1,
         weight: 1,
-        bagSection: '1',
+        bagSectionId: '1',
       },
     ],
   },
