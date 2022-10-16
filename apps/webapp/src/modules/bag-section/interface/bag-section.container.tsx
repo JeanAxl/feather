@@ -5,14 +5,14 @@ import { Button } from '@chakra-ui/react';
 import { useBagSection } from '../infrastructure/react-query/useBagSection.hook';
 import {
   addItemInBag,
-  deleteItemInBag,
   updateItemInBag,
 } from '../infrastructure/redux/bag-section.reducer';
 import { BagSectionComponent } from './bag-section.presentation';
 
 export const BagSectionContainer: FunctionComponent = () => {
   const dispatch = useAppDispatch();
-  const { bagSection, updateBagSection } = useBagSection();
+  const { bagSection, updateBagSection, deleteItemInBagSection } =
+    useBagSection();
 
   if (!bagSection) {
     return null;
@@ -28,7 +28,7 @@ export const BagSectionContainer: FunctionComponent = () => {
         updateItemInBag={(id, input) =>
           dispatch(updateItemInBag({ id, input }))
         }
-        deleteItemInBag={(id) => dispatch(deleteItemInBag(id))}
+        deleteItemInBag={(id) => deleteItemInBagSection(id)}
       />
     </>
   );

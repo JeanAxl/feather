@@ -1,5 +1,6 @@
 import {
   useBagSectionQuery,
+  useDeleteItemInBagSectionMutation,
   useUpdateBagSectionMutation,
 } from '@feather/graphql-client';
 import { useQueryClient } from '@tanstack/react-query';
@@ -13,24 +14,48 @@ export const useBagSection = () => {
     id: '1',
   });
 
-  const mutation = useUpdateBagSectionMutation(graphqlClient, {
+  const updateBagSectionMutation = useUpdateBagSectionMutation(graphqlClient, {
     onSuccess: () => {
       queryClient.invalidateQueries(['bagSection']);
     },
   });
 
+  const deleteItemInBagMutation = useDeleteItemInBagSectionMutation(
+    graphqlClient,
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['bagSection']);
+      },
+    }
+  );
+
   const updateBagSection = useCallback(() => {
-    mutation.mutate({
+    updateBagSectionMutation.mutate({
       input: {
         id: '1',
         name: 'New name - ' + new Date().getTime(),
       },
     });
-  }, [mutation]);
+  }, [updateBagSectionMutation]);
+
+  const deleteItemInBagSection = useCallback(
+    (itemId: string) => {
+      deleteItemInBagMutation.mutate({
+        itemId,
+      });
+    },
+    [deleteItemInBagMutation]
+  );
 
   const bagSection = data?.bagSection
     ? new BagSection(data.bagSection.name, data.bagSection.items)
     : null;
 
-  return { bagSection, isSuccess, status, updateBagSection };
+  return {
+    bagSection,
+    isSuccess,
+    status,
+    updateBagSection,
+    deleteItemInBagSection,
+  };
 };
