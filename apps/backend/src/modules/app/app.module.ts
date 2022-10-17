@@ -3,8 +3,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BagSectionModule } from '../bag-section/bag-section.module';
-import { BagSectionTypeOrmEntity } from '../bag-section/infrastructure/typeorm/bag-section/bag-section.typeorm-entity';
-import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item/item.typeorm-entity';
+import { appTypeOrmEntities } from './infrastructure/typeorm/app.typeorm-entities';
 
 @Module({
   imports: [
@@ -16,7 +15,7 @@ import { ItemTypeOrmEntity } from '../bag-section/infrastructure/typeorm/item/it
       type: 'sqlite',
       database: ':serve:',
       dropSchema: true,
-      entities: [ItemTypeOrmEntity, BagSectionTypeOrmEntity],
+      entities: appTypeOrmEntities,
       synchronize: true,
       keepConnectionAlive: false,
     }),
