@@ -1,5 +1,5 @@
 import { Module, ModuleMetadata } from '@nestjs/common';
-import { Test } from '@nestjs/testing';
+import { Test, TestingModule as NestNestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { appTypeOrmEntities } from '../../modules/app/infrastructure/typeorm/app.typeorm-entities';
@@ -20,18 +20,18 @@ import { Fixture, loadFixtures } from './fixtures.utils';
 class TestingModule {}
 
 export const testingModuleFactory = async (
-  providers: ModuleMetadata['providers'] = [],
-  imports: ModuleMetadata['imports'] = [],
+  moduleMetaData: ModuleMetadata = {},
   fixtures: Fixture[] = []
-) => {
+): Promise<[NestNestingModule, DataSource]> => {
   const module = await Test.createTestingModule({
-    providers: [...providers],
-    imports: [TestingModule, ...imports],
+    providers: [...moduleMetaData.providers],
+    imports: [TestingModule, ...moduleMetaData.imports],
+    controllers: [...moduleMetaData.controllers],
   }).compile();
 
   const dataSource = module.get(DataSource);
   const queryRunner = dataSource.createQueryRunner();
   await loadFixtures(queryRunner, fixtures);
 
-  return module;
+  return [module, dataSource];
 };

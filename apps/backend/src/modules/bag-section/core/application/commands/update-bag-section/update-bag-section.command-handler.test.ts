@@ -1,4 +1,4 @@
-import { DataSource, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { testingModuleFactory } from '../../../../../../utils/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { BagSectionTypeOrmEntity } from '../../../../infrastructure/typeorm/bag-section/bag-section.typeorm-entity';
@@ -9,8 +9,10 @@ describe('UpdateBagSectionCommandHandler', () => {
   let commandHandler: UpdateBagSectionCommandHandler;
   let bagSectionRepository: Repository<BagSectionTypeOrmEntity>;
   beforeAll(async () => {
-    const module = await testingModuleFactory([], [BagSectionModule], fixtures);
-    const dataSource = module.get(DataSource);
+    const [module, dataSource] = await testingModuleFactory(
+      { imports: [BagSectionModule] },
+      fixtures
+    );
     commandHandler = module.get(UpdateBagSectionCommandHandler);
     bagSectionRepository = dataSource.getRepository(BagSectionTypeOrmEntity);
   });
