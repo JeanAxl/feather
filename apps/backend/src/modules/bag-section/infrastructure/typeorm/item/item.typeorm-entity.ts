@@ -29,5 +29,5 @@ export class ItemTypeOrmEntity {
   bagSection: BagSectionTypeOrmEntity | undefined | null;
 
   @Column({ nullable: true })
-  bagSectionId: BagSectionTypeOrmEntity['id'];
+  bagSectionId: BagSectionTypeOrmEntity['id'] | null;
 }

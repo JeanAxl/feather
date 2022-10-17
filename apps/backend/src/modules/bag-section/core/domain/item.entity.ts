@@ -4,4 +4,5 @@ export class Item {
   description: string;
   quantity: number;
   weight: number;
+  bagSectionId: string | null;
 }
