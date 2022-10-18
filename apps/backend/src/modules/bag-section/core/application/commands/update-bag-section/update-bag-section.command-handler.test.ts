@@ -10,7 +10,7 @@ describe('UpdateBagSectionCommandHandler', () => {
   let bagSectionRepository: Repository<BagSectionTypeOrmEntity>;
   beforeAll(async () => {
     const [module, dataSource] = await testingModuleFactory(
-      { imports: [BagSectionModule] },
+      [BagSectionModule],
       fixtures
     );
     commandHandler = module.get(UpdateBagSectionCommandHandler);

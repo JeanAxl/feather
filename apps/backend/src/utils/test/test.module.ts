@@ -20,13 +20,11 @@ import { Fixture, loadFixtures } from './fixtures.utils';
 class TestingModule {}
 
 export const testingModuleFactory = async (
-  moduleMetaData: ModuleMetadata = {},
+  imports: ModuleMetadata['imports'],
   fixtures: Fixture[] = []
 ): Promise<[NestNestingModule, DataSource]> => {
   const module = await Test.createTestingModule({
-    providers: [...moduleMetaData.providers],
-    imports: [TestingModule, ...moduleMetaData.imports],
-    controllers: [...moduleMetaData.controllers],
+    imports: [TestingModule, ...imports],
   }).compile();
 
   const dataSource = module.get(DataSource);

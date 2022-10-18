@@ -11,7 +11,7 @@ describe('DeleteItemInBagSectionCommandHandler', () => {
   let itemRepository: Repository<ItemTypeOrmEntity>;
   beforeAll(async () => {
     const [module, dataSource] = await testingModuleFactory(
-      { imports: [BagSectionModule] },
+      [BagSectionModule],
       fixtures
     );
     commandHandler = module.get(DeleteItemInBagSectionCommandHandler);
