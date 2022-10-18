@@ -15,12 +15,12 @@ type Query {
   bagSection(id: ID!): BagSection
 }
 
-input ItemInput {
+input AddItemInBagSectionInput {
   id: ID!
   name: String!
-  description: String!
-  quantity: Int!
-  weight: Float!
+  description: String
+  quantity: Int
+  weight: Float
 }
 
 input UpdateBagSectionInput {
@@ -30,5 +30,6 @@ input UpdateBagSectionInput {
 
 type Mutation {
   updateBagSection(bagSectionId: ID, input: UpdateBagSectionInput): Boolean!
+  addItemInBagSection(input: AddItemInBagSectionInput): Boolean!
   deleteItemInBagSection(itemId: ID!): Boolean!
 }

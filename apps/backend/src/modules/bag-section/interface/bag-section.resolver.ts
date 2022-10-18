@@ -1,7 +1,14 @@
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UpdateBagSectionInput } from '../../../../graphql-generated-types';
+import {
+  AddItemInBagSectionInput,
+  UpdateBagSectionInput,
+} from '../../../../graphql-generated-types';
 import { GraphQLReturn } from '../../../../graphql-return.type';
+import {
+  AddItemInBagSectionCommand,
+  AddItemInBagSectionCommandResult,
+} from '../core/application/commands/add-item-in-bag-section/add-item-in-bag-section.command';
 import {
   DeleteItemInBagSectionCommand,
   DeleteItemInBagSectionCommandResult,
@@ -53,6 +60,18 @@ export class BagSectionResolver {
       DeleteItemInBagSectionCommand,
       DeleteItemInBagSectionCommandResult
     >(new DeleteItemInBagSectionCommand({ itemId }));
+
+    return true;
+  }
+
+  @Mutation()
+  async addItemInBagSection(
+    @Args('input') input: AddItemInBagSectionInput
+  ): Promise<GraphQLReturn<'addItemInBagSection'>> {
+    await this.commandBus.execute<
+      AddItemInBagSectionCommand,
+      AddItemInBagSectionCommandResult
+    >(new AddItemInBagSectionCommand(input));
 
     return true;
   }

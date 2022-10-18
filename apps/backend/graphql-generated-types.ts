@@ -8,12 +8,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export class ItemInput {
+export class AddItemInBagSectionInput {
     id: string;
     name: string;
-    description: string;
-    quantity: number;
-    weight: number;
+    description?: Nullable<string>;
+    quantity?: Nullable<number>;
+    weight?: Nullable<number>;
 }
 
 export class UpdateBagSectionInput {
@@ -41,6 +41,8 @@ export abstract class IQuery {
 
 export abstract class IMutation {
     abstract updateBagSection(bagSectionId?: Nullable<string>, input?: Nullable<UpdateBagSectionInput>): boolean | Promise<boolean>;
+
+    abstract addItemInBagSection(input?: Nullable<AddItemInBagSectionInput>): boolean | Promise<boolean>;
 
     abstract deleteItemInBagSection(itemId: string): boolean | Promise<boolean>;
 }

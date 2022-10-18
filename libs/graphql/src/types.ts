@@ -12,6 +12,14 @@ export type Scalars = {
   Float: number;
 };
 
+export type AddItemInBagSectionInput = {
+  description?: InputMaybe<Scalars['String']>;
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  quantity?: InputMaybe<Scalars['Int']>;
+  weight?: InputMaybe<Scalars['Float']>;
+};
+
 export type BagSection = {
   __typename?: 'BagSection';
   id: Scalars['ID'];
@@ -28,18 +36,16 @@ export type Item = {
   weight: Scalars['Float'];
 };
 
-export type ItemInput = {
-  description: Scalars['String'];
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  quantity: Scalars['Int'];
-  weight: Scalars['Float'];
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
+  addItemInBagSection: Scalars['Boolean'];
   deleteItemInBagSection: Scalars['Boolean'];
   updateBagSection: Scalars['Boolean'];
+};
+
+
+export type MutationAddItemInBagSectionArgs = {
+  input?: InputMaybe<AddItemInBagSectionInput>;
 };
 
 
