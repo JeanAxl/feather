@@ -8,7 +8,7 @@ import { NestFactory } from '@nestjs/core';
 import { DataSource } from 'typeorm';
 import { AppModule } from './modules/app/app.module';
 import { fixtures } from './modules/bag-section/core/application/commands/update-bag-section/fixtures';
-import { loadFixtures } from './utils/test/test.module';
+import { loadFixtures } from './utils/test/fixtures.utils';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
