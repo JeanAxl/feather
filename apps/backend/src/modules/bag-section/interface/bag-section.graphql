@@ -4,6 +4,7 @@ type Item {
   description: String!
   quantity: Int!
   weight: Float!
+  bagSectionId: String!
 }
 type BagSection {
   id: ID!
@@ -18,6 +19,7 @@ type Query {
 input AddItemInBagSectionInput {
   id: ID!
   name: String!
+  bagSectionId: String!
   description: String
   quantity: Int
   weight: Float

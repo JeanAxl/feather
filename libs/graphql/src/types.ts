@@ -13,6 +13,7 @@ export type Scalars = {
 };
 
 export type AddItemInBagSectionInput = {
+  bagSectionId: Scalars['String'];
   description?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
   name: Scalars['String'];
@@ -29,6 +30,7 @@ export type BagSection = {
 
 export type Item = {
   __typename?: 'Item';
+  bagSectionId: Scalars['String'];
   description: Scalars['String'];
   id: Scalars['ID'];
   name: Scalars['String'];

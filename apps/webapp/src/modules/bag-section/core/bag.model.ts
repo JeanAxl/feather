@@ -37,6 +37,7 @@ export const bagSectionFixtureFactory = (): BagSection => {
       name: 'Tente 2 places',
       quantity: 1,
       weight: 1.9,
+      bagSectionId: '1',
     },
     {
       id: '2',
@@ -44,6 +45,7 @@ export const bagSectionFixtureFactory = (): BagSection => {
       name: 'Footprint',
       quantity: 1,
       weight: 1.9,
+      bagSectionId: '1',
     },
     {
       id: '3',
@@ -51,6 +53,7 @@ export const bagSectionFixtureFactory = (): BagSection => {
       name: 'Tapis de sol',
       quantity: 1,
       weight: 1.9,
+      bagSectionId: '1',
     },
   ]);
 };

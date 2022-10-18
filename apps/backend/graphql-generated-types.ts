@@ -11,6 +11,7 @@
 export class AddItemInBagSectionInput {
     id: string;
     name: string;
+    bagSectionId: string;
     description?: Nullable<string>;
     quantity?: Nullable<number>;
     weight?: Nullable<number>;
@@ -27,6 +28,7 @@ export class Item {
     description: string;
     quantity: number;
     weight: number;
+    bagSectionId: string;
 }
 
 export class BagSection {

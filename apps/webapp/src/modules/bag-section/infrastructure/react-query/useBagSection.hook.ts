@@ -1,4 +1,5 @@
 import {
+  useAddItemInBagSectionMutation,
   useBagSectionQuery,
   useDeleteItemInBagSectionMutation,
   useUpdateBagSectionMutation,
@@ -7,6 +8,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { graphqlClient } from '../../../../shared/graphql/client';
 import { BagSection } from '../../core/bag.model';
+import { Item } from '../../core/item.model';
 
 export const useBagSection = () => {
   const queryClient = useQueryClient();
@@ -21,6 +23,15 @@ export const useBagSection = () => {
   });
 
   const deleteItemInBagMutation = useDeleteItemInBagSectionMutation(
+    graphqlClient,
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['bagSection']);
+      },
+    }
+  );
+
+  const addItemInBagSectionMutation = useAddItemInBagSectionMutation(
     graphqlClient,
     {
       onSuccess: () => {
@@ -47,6 +58,15 @@ export const useBagSection = () => {
     [deleteItemInBagMutation]
   );
 
+  const addItemInBagSection = useCallback(
+    (item: Item) => {
+      addItemInBagSectionMutation.mutate({
+        input: item,
+      });
+    },
+    [addItemInBagSectionMutation]
+  );
+
   const bagSection = data?.bagSection
     ? new BagSection(data.bagSection.name, data.bagSection.items)
     : null;
@@ -55,6 +75,7 @@ export const useBagSection = () => {
     bagSection,
     isSuccess,
     status,
+    addItemInBagSection,
     updateBagSection,
     deleteItemInBagSection,
   };

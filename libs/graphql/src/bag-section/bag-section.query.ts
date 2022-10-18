@@ -11,6 +11,7 @@ gql`
         description
         quantity
         weight
+        bagSectionId
       }
     }
   }

@@ -4,6 +4,7 @@ export type Item = {
   description: string;
   quantity: number;
   weight: number;
+  bagSectionId: string;
 };
 
 export const itemFixtureFactory = (): Item => ({
@@ -11,5 +12,6 @@ export const itemFixtureFactory = (): Item => ({
   name: 'ItemName',
   description: 'ItemDescription',
   quantity: 1,
-  weight: 1
+  weight: 1,
+  bagSectionId: '1',
 });

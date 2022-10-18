@@ -1,5 +1,5 @@
-import { Tfoot, Tr, Th, Button } from '@chakra-ui/react';
-import React, { FunctionComponent } from 'react';
+import { Button, Tfoot, Th, Tr } from '@chakra-ui/react';
+import { FunctionComponent } from 'react';
 import { Item } from '../../core/item.model';
 
 type Props = {
@@ -13,7 +13,7 @@ export const TableFoot: FunctionComponent<Props> = ({
   bagSectionTotalWeight,
   bagSectionContentLength,
   bagSectionTotalItems,
-  addItemInBag
+  addItemInBag,
 }) => {
   return (
     <Tfoot>
@@ -25,12 +25,14 @@ export const TableFoot: FunctionComponent<Props> = ({
             onClick={() =>
               addItemInBag({
                 id: (bagSectionContentLength + 1).toString(),
-                name: '',
+                bagSectionId: '1',
+                name: 'New item ' + new Date().getTime(),
                 description: '',
                 quantity: 0,
-                weight: 0
+                weight: 0,
               })
-            }>
+            }
+          >
             Add item
           </Button>
         </Th>
