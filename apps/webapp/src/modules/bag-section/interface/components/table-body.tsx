@@ -6,6 +6,7 @@ import {
   EditableInput,
   EditablePreview,
   Flex,
+  Input,
   Spacer,
   Tbody,
   Td,
@@ -53,18 +54,26 @@ export const TableBody: FunctionComponent<Props> = ({
             </Flex>
           </Td>
           <Td>
-            <Flex minWidth="max-content" alignItems="center" gap="2">
-              <Box flex={1}>
-                <EditableCell
-                  item={item}
-                  attribute={'name'}
-                  updateItemInBag={updateItemInBag}
-                />
-              </Box>
-            </Flex>
+            <EditableCell
+              item={item}
+              attribute={'description'}
+              updateItemInBag={updateItemInBag}
+            />
           </Td>
-          <Td isNumeric>{item.weight} kg</Td>
-          <Td isNumeric>{item.quantity}</Td>
+          <Td>
+            <EditableNumberCell
+              item={item}
+              attribute="weight"
+              updateItemInBag={updateItemInBag}
+            />
+          </Td>
+          <Td>
+            <EditableNumberCell
+              item={item}
+              attribute="quantity"
+              updateItemInBag={updateItemInBag}
+            />
+          </Td>
         </Tr>
       ))}
     </Tbody>
@@ -83,15 +92,40 @@ const EditableCell: FunctionComponent<EditableCellProps> = ({
   updateItemInBag,
 }) => {
   return (
-    <Editable isPreviewFocusable={true} defaultValue={item[attribute]}>
-      <EditablePreview minWidth={'100%'} />
-      <EditableInput
-        placeholder="name"
-        value={item[attribute]}
-        onChange={(input) =>
-          updateItemInBag(item.id, { [attribute]: input.target.value })
-        }
-      />
+    <Editable
+      isPreviewFocusable={true}
+      onSubmit={(input) => updateItemInBag(item.id, { [attribute]: input })}
+      defaultValue={item[attribute]}
+      placeholder={attribute}
+    >
+      <EditablePreview width={'100%'} />
+      <EditableInput value={item[attribute]} />
+    </Editable>
+  );
+};
+
+type EditableNumberCellProps = {
+  item: Item;
+  attribute: 'weight' | 'quantity';
+  updateItemInBag: (id: Item['id'], input: Partial<Item>) => void;
+};
+
+const EditableNumberCell: FunctionComponent<EditableNumberCellProps> = ({
+  item,
+  attribute,
+  updateItemInBag,
+}) => {
+  return (
+    <Editable
+      isPreviewFocusable={true}
+      onSubmit={(input) =>
+        updateItemInBag(item.id, { [attribute]: parseFloat(input) })
+      }
+      defaultValue={item[attribute].toString()}
+      placeholder={attribute}
+    >
+      <EditablePreview width={'100%'} />
+      <Input as={EditableInput} type="number" value={item[attribute]} />
     </Editable>
   );
 };
