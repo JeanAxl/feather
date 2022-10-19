@@ -3,7 +3,6 @@ import { useAppDispatch } from '../../../shared/redux/hooks';
 
 import { Button } from '@chakra-ui/react';
 import { useBagSection } from '../infrastructure/react-query/useBagSection.hook';
-import { updateItemInBag } from '../infrastructure/redux/bag-section.reducer';
 import { BagSectionComponent } from './bag-section.presentation';
 
 export const BagSectionContainer: FunctionComponent = () => {
@@ -13,6 +12,7 @@ export const BagSectionContainer: FunctionComponent = () => {
     addItemInBagSection,
     updateBagSection,
     deleteItemInBagSection,
+    updateItemInBagSection,
   } = useBagSection();
 
   if (!bagSection) {
@@ -26,9 +26,7 @@ export const BagSectionContainer: FunctionComponent = () => {
       <BagSectionComponent
         bagSection={bagSection}
         addItemInBag={(item) => addItemInBagSection(item)}
-        updateItemInBag={(id, input) =>
-          dispatch(updateItemInBag({ id, input }))
-        }
+        updateItemInBag={(id, input) => updateItemInBagSection(id, input)}
         deleteItemInBag={(id) => deleteItemInBagSection(id)}
       />
     </>

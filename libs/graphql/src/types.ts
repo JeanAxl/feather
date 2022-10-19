@@ -85,7 +85,7 @@ export type UpdateBagSectionInput = {
 export type UpdateItemInBagSectionInput = {
   description?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
-  name: Scalars['String'];
+  name?: InputMaybe<Scalars['String']>;
   quantity?: InputMaybe<Scalars['Int']>;
   weight?: InputMaybe<Scalars['Float']>;
 };

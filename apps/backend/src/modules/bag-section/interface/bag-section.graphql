@@ -27,7 +27,7 @@ input AddItemInBagSectionInput {
 
 input UpdateItemInBagSectionInput {
   id: ID!
-  name: String!
+  name: String
   description: String
   quantity: Int
   weight: Float

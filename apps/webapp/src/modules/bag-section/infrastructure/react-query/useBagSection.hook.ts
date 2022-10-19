@@ -3,6 +3,7 @@ import {
   useBagSectionQuery,
   useDeleteItemInBagSectionMutation,
   useUpdateBagSectionMutation,
+  useUpdateItemInBagSectionMutation,
 } from '@feather/graphql-client';
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
@@ -40,6 +41,14 @@ export const useBagSection = () => {
     }
   );
 
+  const updateItemInBagSectionMutation = useUpdateItemInBagSectionMutation(
+    graphqlClient,
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['bagSection']);
+      },
+    }
+  );
   const updateBagSection = useCallback(() => {
     updateBagSectionMutation.mutate({
       input: {
@@ -66,7 +75,12 @@ export const useBagSection = () => {
     },
     [addItemInBagSectionMutation]
   );
-
+  const updateItemInBagSection = useCallback(
+    (id: Item['id'], input: Partial<Item>) => {
+      updateItemInBagSectionMutation.mutate({ input: { id, ...input } });
+    },
+    [updateItemInBagSectionMutation]
+  );
   const bagSection = data?.bagSection
     ? new BagSection(data.bagSection.name, data.bagSection.items)
     : null;
@@ -78,5 +92,6 @@ export const useBagSection = () => {
     addItemInBagSection,
     updateBagSection,
     deleteItemInBagSection,
+    updateItemInBagSection,
   };
 };
