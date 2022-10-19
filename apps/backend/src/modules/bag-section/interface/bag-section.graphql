@@ -25,6 +25,14 @@ input AddItemInBagSectionInput {
   weight: Float
 }
 
+input UpdateItemInBagSectionInput {
+  id: ID!
+  name: String!
+  description: String
+  quantity: Int
+  weight: Float
+}
+
 input UpdateBagSectionInput {
   id: String!
   name: String
@@ -32,6 +40,7 @@ input UpdateBagSectionInput {
 
 type Mutation {
   updateBagSection(bagSectionId: ID, input: UpdateBagSectionInput): Boolean!
+  updateItemInBagSection(input: UpdateItemInBagSectionInput): Boolean!
   addItemInBagSection(input: AddItemInBagSectionInput): Boolean!
   deleteItemInBagSection(itemId: ID!): Boolean!
 }

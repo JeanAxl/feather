@@ -17,6 +17,14 @@ export class AddItemInBagSectionInput {
     weight?: Nullable<number>;
 }
 
+export class UpdateItemInBagSectionInput {
+    id: string;
+    name: string;
+    description?: Nullable<string>;
+    quantity?: Nullable<number>;
+    weight?: Nullable<number>;
+}
+
 export class UpdateBagSectionInput {
     id: string;
     name?: Nullable<string>;
@@ -43,6 +51,8 @@ export abstract class IQuery {
 
 export abstract class IMutation {
     abstract updateBagSection(bagSectionId?: Nullable<string>, input?: Nullable<UpdateBagSectionInput>): boolean | Promise<boolean>;
+
+    abstract updateItemInBagSection(input?: Nullable<UpdateItemInBagSectionInput>): boolean | Promise<boolean>;
 
     abstract addItemInBagSection(input?: Nullable<AddItemInBagSectionInput>): boolean | Promise<boolean>;
 

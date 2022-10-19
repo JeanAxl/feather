@@ -43,6 +43,7 @@ export type Mutation = {
   addItemInBagSection: Scalars['Boolean'];
   deleteItemInBagSection: Scalars['Boolean'];
   updateBagSection: Scalars['Boolean'];
+  updateItemInBagSection: Scalars['Boolean'];
 };
 
 
@@ -61,6 +62,11 @@ export type MutationUpdateBagSectionArgs = {
   input?: InputMaybe<UpdateBagSectionInput>;
 };
 
+
+export type MutationUpdateItemInBagSectionArgs = {
+  input?: InputMaybe<UpdateItemInBagSectionInput>;
+};
+
 export type Query = {
   __typename?: 'Query';
   bagSection?: Maybe<BagSection>;
@@ -74,4 +80,12 @@ export type QueryBagSectionArgs = {
 export type UpdateBagSectionInput = {
   id: Scalars['String'];
   name?: InputMaybe<Scalars['String']>;
+};
+
+export type UpdateItemInBagSectionInput = {
+  description?: InputMaybe<Scalars['String']>;
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  quantity?: InputMaybe<Scalars['Int']>;
+  weight?: InputMaybe<Scalars['Float']>;
 };
