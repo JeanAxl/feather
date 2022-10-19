@@ -34,8 +34,8 @@ export const TableBody: FunctionComponent<Props> = ({
             <Flex minWidth="max-content" alignItems="center" gap="2">
               <Box flex={1}>
                 <EditableCell
-                  itemName={item.name}
-                  itemId={item.id}
+                  item={item}
+                  attribute={'name'}
                   updateItemInBag={updateItemInBag}
                 />
               </Box>
@@ -52,7 +52,17 @@ export const TableBody: FunctionComponent<Props> = ({
               </Box>
             </Flex>
           </Td>
-          <Td>{item.description}</Td>
+          <Td>
+            <Flex minWidth="max-content" alignItems="center" gap="2">
+              <Box flex={1}>
+                <EditableCell
+                  item={item}
+                  attribute={'name'}
+                  updateItemInBag={updateItemInBag}
+                />
+              </Box>
+            </Flex>
+          </Td>
           <Td isNumeric>{item.weight} kg</Td>
           <Td isNumeric>{item.quantity}</Td>
         </Tr>
@@ -62,24 +72,24 @@ export const TableBody: FunctionComponent<Props> = ({
 };
 
 type EditableCellProps = {
-  itemName: Item['name'];
-  itemId: Item['id'];
+  item: Item;
+  attribute: 'name' | 'description';
   updateItemInBag: (id: Item['id'], input: Partial<Item>) => void;
 };
 
 const EditableCell: FunctionComponent<EditableCellProps> = ({
-  itemName,
-  itemId,
+  item,
+  attribute,
   updateItemInBag,
 }) => {
   return (
-    <Editable isPreviewFocusable={true} defaultValue={itemName}>
+    <Editable isPreviewFocusable={true} defaultValue={item[attribute]}>
       <EditablePreview minWidth={'100%'} />
       <EditableInput
         placeholder="name"
-        value={itemName}
+        value={item[attribute]}
         onChange={(input) =>
-          updateItemInBag(itemId, { name: input.target.value })
+          updateItemInBag(item.id, { [attribute]: input.target.value })
         }
       />
     </Editable>
