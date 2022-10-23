@@ -45,6 +45,15 @@ export class BagSectionResolver {
     return { ...result };
   }
 
+  @Query()
+  async bagSections(): Promise<GraphQLReturn<'bagSections'>> {
+    const result = await this.queryBus.execute<
+      GetBagSectionsQuery,
+      GetBagSectionsQueryResult
+    >(new GetBagSectionsQuery());
+    return result;
+  }
+
   @Mutation()
   async updateBagSection(
     @Args('input') input: UpdateBagSectionInput
