@@ -14,6 +14,7 @@ type BagSection {
 
 type Query {
   bagSection(id: ID!): BagSection
+  bagSections: [BagSection!]!
 }
 
 input AddItemInBagSectionInput {

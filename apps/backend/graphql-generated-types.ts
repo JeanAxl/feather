@@ -47,6 +47,8 @@ export class BagSection {
 
 export abstract class IQuery {
     abstract bagSection(id: string): Nullable<BagSection> | Promise<Nullable<BagSection>>;
+
+    abstract bagSections(): BagSection[] | Promise<BagSection[]>;
 }
 
 export abstract class IMutation {

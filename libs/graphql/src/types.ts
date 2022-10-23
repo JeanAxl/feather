@@ -70,6 +70,7 @@ export type MutationUpdateItemInBagSectionArgs = {
 export type Query = {
   __typename?: 'Query';
   bagSection?: Maybe<BagSection>;
+  bagSections: Array<BagSection>;
 };
 
 
