@@ -19,6 +19,10 @@ export class BagSectionRepositoryAdapter implements BagSectionRepositoryPort {
     });
   }
 
+  public async getBagSections(): Promise<BagSection[]> {
+    return this.typeOrmRepository.find();
+  }
+
   public async updateBagSection(
     id: BagSection['id'],
     input: Partial<BagSection>

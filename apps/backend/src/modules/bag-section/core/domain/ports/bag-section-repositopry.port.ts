@@ -6,6 +6,8 @@ export abstract class BagSectionRepositoryPort {
     id: BagSection['id']
   ): Promise<BagSection | null>;
 
+  public abstract getBagSections(): Promise<BagSection[]>;
+
   public abstract updateBagSection(
     id: BagSection['id'],
     input: UpdateBagSectionInput

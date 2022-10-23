@@ -26,6 +26,10 @@ import {
   GetBagSectionQuery,
   GetBagSectionQueryResult,
 } from '../core/application/queries/get-bag-section/get-bag-section.query';
+import {
+  GetBagSectionsQuery,
+  GetBagSectionsQueryResult,
+} from '../core/application/queries/get-bag-sections/get-bag-sections.query';
 
 @Resolver('BagSection')
 export class BagSectionResolver {

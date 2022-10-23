@@ -3,8 +3,12 @@ import { DeleteItemInBagSectionCommandHandler } from './commands/delete-item-in-
 import { UpdateBagSectionCommandHandler } from './commands/update-bag-section/update-bag-section.command-handler';
 import { UpdateItemInBagSectionCommandHandler } from './commands/update-item-in-bag-section/update-item-in-bag-section.command-handler';
 import { GetBagSectionQueryHandler } from './queries/get-bag-section/get-bag-section.query-handler';
+import { GetBagSectionsQueryHandler } from './queries/get-bag-sections/get-bag-sections.query-handler';
 
-export const queryHandlers = [GetBagSectionQueryHandler];
+export const queryHandlers = [
+  GetBagSectionQueryHandler,
+  GetBagSectionsQueryHandler,
+];
 export const commandHandlers = [
   UpdateBagSectionCommandHandler,
   DeleteItemInBagSectionCommandHandler,
