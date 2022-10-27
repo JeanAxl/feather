@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../../shared/redux/store';
-import { BagSection, bagSectionFixtureFactory } from '../../core/bag.model';
-import { Item } from '../../core/item.model';
+import {
+  BagSection,
+  bagSectionFixtureFactory,
+} from '../../core/domain/bag.model';
+import { Item } from '../../core/domain/item.model';
 
 export interface BagSectionState {
   value: BagSection;

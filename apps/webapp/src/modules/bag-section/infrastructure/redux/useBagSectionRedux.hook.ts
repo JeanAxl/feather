@@ -1,6 +1,9 @@
 import { useReducer } from 'react';
-import { BagSection, bagSectionFixtureFactory } from '../../core/bag.model';
-import { Item } from '../../core/item.model';
+import {
+  BagSection,
+  bagSectionFixtureFactory,
+} from '../../core/domain/bag.model';
+import { Item } from '../../core/domain/item.model';
 
 enum ACTIONS {
   ADD_ITEM = 'ADD_ITEM',

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { BagSection } from '../../core/bag.model';
+import { BagSection } from '../../core/domain/bag.model';
 import { BagSectionComponent } from '../bag-section/bag-section.presentation';
 
 type Props = {

@@ -8,8 +8,8 @@ import {
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { graphqlClient } from '../../../../shared/graphql/client';
-import { BagSection } from '../../core/bag.model';
-import { Item } from '../../core/item.model';
+import { BagSection } from '../../core/domain/bag.model';
+import { Item } from '../../core/domain/item.model';
 
 export const useBagSection = () => {
   const queryClient = useQueryClient();

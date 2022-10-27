@@ -1,8 +1,8 @@
 import { Table, TableCaption, TableContainer } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 
-import { BagSection } from '../../core/bag.model';
-import { Item } from '../../core/item.model';
+import { BagSection } from '../../core/domain/bag.model';
+import { Item } from '../../core/domain/item.model';
 import { TableBody } from './components/table-body';
 import { TableFoot } from './components/table-foot';
 import { TableHead } from './components/table-head';

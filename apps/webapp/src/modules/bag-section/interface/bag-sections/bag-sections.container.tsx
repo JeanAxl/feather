@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { BagSection } from '../../core/bag.model';
+import { BagSection } from '../../core/domain/bag.model';
 import { useBagSections } from '../../infrastructure/react-query/useBagSections.hook';
 import { BagSectionsComponent } from './bag-sections.presentation';
 
