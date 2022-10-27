@@ -1,6 +1,6 @@
 import { Button, Tfoot, Th, Tr } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
-import { Item } from '../../core/item.model';
+import { Item } from '../../../core/item.model';
 
 type Props = {
   bagSectionTotalWeight: number;

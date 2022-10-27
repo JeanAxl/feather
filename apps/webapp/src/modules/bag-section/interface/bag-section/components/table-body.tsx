@@ -13,8 +13,8 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
-import { BagSection } from '../../core/bag.model';
-import { Item } from '../../core/item.model';
+import { BagSection } from '../../../core/bag.model';
+import { Item } from '../../../core/item.model';
 
 type Props = {
   bagSectionContent: BagSection['items'];

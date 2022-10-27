@@ -1,6 +1,6 @@
-import { Thead, Tr, Th } from '@chakra-ui/react';
-import React, { FunctionComponent } from 'react';
-import { BagSection } from '../../core/bag.model';
+import { Th, Thead, Tr } from '@chakra-ui/react';
+import { FunctionComponent } from 'react';
+import { BagSection } from '../../../core/bag.model';
 
 type Props = {
   bagSectionName: BagSection['name'];

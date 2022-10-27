@@ -1,10 +1,11 @@
-import { TableContainer, Table, TableCaption } from '@chakra-ui/react';
-import React, { FunctionComponent } from 'react';
-import { BagSection } from '../core/bag.model';
-import { Item } from '../core/item.model';
-import { TableHead } from './components/table-head';
+import { Table, TableCaption, TableContainer } from '@chakra-ui/react';
+import { FunctionComponent } from 'react';
+
+import { BagSection } from '../../core/bag.model';
+import { Item } from '../../core/item.model';
 import { TableBody } from './components/table-body';
 import { TableFoot } from './components/table-foot';
+import { TableHead } from './components/table-head';
 
 type BagSectionProps = {
   bagSection: BagSection;
@@ -17,7 +18,7 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
   bagSection,
   addItemInBag,
   updateItemInBag,
-  deleteItemInBag
+  deleteItemInBag,
 }) => {
   return (
     <TableContainer>

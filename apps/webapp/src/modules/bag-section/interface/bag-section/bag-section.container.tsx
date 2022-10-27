@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
+import { useBagSection } from '../../infrastructure/react-query/useBagSection.hook';
 
-import { useBagSection } from '../infrastructure/react-query/useBagSection.hook';
 import { BagSectionComponent } from './bag-section.presentation';
 
 export const BagSectionContainer: FunctionComponent = () => {
