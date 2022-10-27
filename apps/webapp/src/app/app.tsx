@@ -1,6 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Heading } from '@chakra-ui/layout';
-import { BagSectionContainer } from '../modules/bag-section/interface/bag-section.container';
+import { BagSectionsContainer } from '../modules/bag-section/interface/bag-sections/bag-sections.container';
 
 export function App() {
   return (
@@ -8,7 +7,7 @@ export function App() {
       <Heading as="h1" size="4xl" noOfLines={1}>
         Feather
       </Heading>
-      <BagSectionContainer />
+      <BagSectionsContainer />
     </>
   );
 }
