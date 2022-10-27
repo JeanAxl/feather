@@ -20,7 +20,7 @@ export class BagSectionRepositoryAdapter implements BagSectionRepositoryPort {
   }
 
   public async getBagSections(): Promise<BagSection[]> {
-    return this.typeOrmRepository.find();
+    return this.typeOrmRepository.find({ relations: ['items'] });
   }
 
   public async updateBagSection(
