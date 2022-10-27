@@ -82,7 +82,11 @@ export const useBagSection = () => {
     [updateItemInBagSectionMutation]
   );
   const bagSection = data?.bagSection
-    ? new BagSection(data.bagSection.name, data.bagSection.items)
+    ? new BagSection(
+        data.bagSection.id,
+        data.bagSection.name,
+        data.bagSection.items
+      )
     : null;
 
   return {

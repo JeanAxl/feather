@@ -1,5 +1,5 @@
 import { Heading } from '@chakra-ui/layout';
-import { BagSectionsContainer } from '../modules/bag-section/interface/bag-sections/bag-sections.container';
+import { BagSectionsContainer } from '../modules/bag-section/components/bag-sections/bag-sections.container';
 
 export function App() {
   return (

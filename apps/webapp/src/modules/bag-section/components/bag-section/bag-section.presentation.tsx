@@ -3,9 +3,9 @@ import { FunctionComponent } from 'react';
 
 import { BagSection } from '../../core/domain/bag.model';
 import { Item } from '../../core/domain/item.model';
-import { TableBody } from './components/table-body';
-import { TableFoot } from './components/table-foot';
-import { TableHead } from './components/table-head';
+import { TableBody } from './sub-components/table-body';
+import { TableFoot } from './sub-components/table-foot';
+import { TableHead } from './sub-components/table-head';
 
 type BagSectionProps = {
   bagSection: BagSection;

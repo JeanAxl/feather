@@ -32,7 +32,10 @@ const reducer = (state: BagSection, action: ActionType) => {
   const { type, payload } = action;
   switch (type) {
     case ACTIONS.ADD_ITEM:
-      return new BagSection(state.getName(), [...state.getContent(), payload]);
+      return new BagSection(state.getId(), state.getName(), [
+        ...state.getContent(),
+        payload,
+      ]);
 
     case ACTIONS.UPDATE_ITEM: {
       const newContent = state.getContent().map((item) => {
@@ -41,11 +44,12 @@ const reducer = (state: BagSection, action: ActionType) => {
         }
         return item;
       });
-      return new BagSection(state.getName(), newContent);
+      return new BagSection(state.getId(), state.getName(), newContent);
     }
 
     case ACTIONS.DELETE_ITEM:
       return new BagSection(
+        state.getId(),
         state.getName(),
         state.getContent().filter((item) => item.id != payload.id)
       );

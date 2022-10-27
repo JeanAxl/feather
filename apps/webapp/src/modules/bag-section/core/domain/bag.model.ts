@@ -1,9 +1,17 @@
 import { Item } from './item.model';
 
 export class BagSection {
-  constructor(private name: string, private items: Item[] = []) {}
+  constructor(
+    private id: string,
+    private name: string,
+    private items: Item[] = []
+  ) {}
   public setContent(content: Item[]) {
     this.items = content;
+  }
+
+  public getId() {
+    return this.id;
   }
 
   public getName() {
@@ -30,7 +38,7 @@ export class BagSection {
 }
 
 export const bagSectionFixtureFactory = (): BagSection => {
-  return new BagSection('couchage', [
+  return new BagSection('1', 'couchage', [
     {
       id: '1',
       description: 'MSR - Hubba Hubba NX',

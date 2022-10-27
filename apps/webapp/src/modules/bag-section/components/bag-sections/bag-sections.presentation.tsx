@@ -12,6 +12,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
     <div>
       {bagSections.map((bagSection) => (
         <BagSectionComponent
+          key={bagSection.getId()}
           bagSection={bagSection}
           addItemInBag={() => ({})}
           deleteItemInBag={() => ({})}

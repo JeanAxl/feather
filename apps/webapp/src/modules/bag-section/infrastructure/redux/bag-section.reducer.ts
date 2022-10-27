@@ -19,13 +19,14 @@ export const bagSectionSlice = createSlice({
   initialState,
   reducers: {
     addItemInBag: (state, action: PayloadAction<Item>) => {
-      state.value = new BagSection(state.value.getName(), [
+      state.value = new BagSection(state.value.getId(), state.value.getName(), [
         ...state.value.getContent(),
         action.payload,
       ]);
     },
     deleteItemInBag: (state, action: PayloadAction<Item['id']>) => {
       state.value = new BagSection(
+        state.value.getId(),
         state.value.getName(),
         state.value.getContent().filter((item) => item.id != action.payload)
       );
@@ -40,7 +41,11 @@ export const bagSectionSlice = createSlice({
         }
         return item;
       });
-      state.value = new BagSection(state.value.getName(), newContent);
+      state.value = new BagSection(
+        state.value.getId(),
+        state.value.getName(),
+        newContent
+      );
     },
   },
 });

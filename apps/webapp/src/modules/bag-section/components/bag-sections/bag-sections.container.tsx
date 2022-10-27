@@ -1,10 +1,9 @@
 import { FunctionComponent } from 'react';
-import { BagSection } from '../../core/domain/bag.model';
-import { useBagSections } from '../../infrastructure/react-query/useBagSections.hook';
+import { useGetBagSections } from '../../infrastructure/react-query/useBagSections.hook';
 import { BagSectionsComponent } from './bag-sections.presentation';
 
 export const BagSectionsContainer: FunctionComponent = () => {
-  const { data, isLoading, isError } = useBagSections();
+  const { bagSections, isLoading, isError } = useGetBagSections();
 
   if (isLoading) {
     return <div>IS LOADING</div>;
@@ -14,10 +13,6 @@ export const BagSectionsContainer: FunctionComponent = () => {
   }
 
   return (
-    <BagSectionsComponent
-      bagSections={data.bagSections.map(
-        (el) => new BagSection(el.name, el.items)
-      )}
-    ></BagSectionsComponent>
+    <BagSectionsComponent bagSections={bagSections}></BagSectionsComponent>
   );
 };
