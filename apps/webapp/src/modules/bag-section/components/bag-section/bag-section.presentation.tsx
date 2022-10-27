@@ -1,4 +1,4 @@
-import { Table, TableCaption, TableContainer } from '@chakra-ui/react';
+import { Table, TableContainer } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 
 import { BagSection } from '../../core/domain/bag.model';
@@ -23,7 +23,6 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
   return (
     <TableContainer>
       <Table variant="simple" size="sm">
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
         <TableHead bagSectionName={bagSection.getName()} />
         <TableBody
           bagSectionContent={bagSection.getContent()}
