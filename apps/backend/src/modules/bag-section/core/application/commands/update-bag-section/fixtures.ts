@@ -7,7 +7,11 @@ export const fixtures = [
     items: [
       {
         id: '1',
-        name: 'Some test name',
+        name: 'Sleeping section',
+      },
+      {
+        id: '2',
+        name: 'Food section',
       },
     ],
   },
@@ -37,6 +41,14 @@ export const fixtures = [
         quantity: 1,
         weight: 1,
         bagSectionId: '1',
+      },
+      {
+        id: '4',
+        description: 'Thermarest - Z Lite',
+        name: 'Tapis de sol',
+        quantity: 1,
+        weight: 1,
+        bagSectionId: '2',
       },
     ],
   },
