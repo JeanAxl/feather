@@ -1,5 +1,5 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { bagSectionReducer } from '../../modules/bag-section/infrastructure/redux/bag-section.reducer';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { bagSectionReducer } from '../../modules/bag-section/hooks/redux/bag-section.reducer';
 
 export const store = configureStore({
   reducer: {
