@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useGetBagSections } from '../../infrastructure/react-query/useBagSections.hook';
+import { useGetBagSections } from '../../infrastructure/react-query/useGetBagSections.hook';
 import { BagSectionsComponent } from './bag-sections.presentation';
 
 export const BagSectionsContainer: FunctionComponent = () => {
