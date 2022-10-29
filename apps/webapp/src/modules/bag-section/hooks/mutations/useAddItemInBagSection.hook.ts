@@ -12,7 +12,7 @@ export const useAddItemInBagSection = (): {
     graphqlClient,
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(['bagSection']);
+        queryClient.invalidateQueries(['bagSections']);
       },
     }
   );

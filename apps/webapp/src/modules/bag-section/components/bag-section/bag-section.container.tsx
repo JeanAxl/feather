@@ -19,9 +19,9 @@ export const BagSectionContainer: FunctionComponent = () => {
   return (
     <BagSectionComponent
       bagSection={bagSection}
-      addItemInBag={(item) => addItemInBagSection(item)}
-      updateItemInBag={(id, input) => updateItemInBagSection(id, input)}
-      deleteItemInBag={(id) => deleteItemInBagSection(id)}
+      addItemInBag={addItemInBagSection}
+      updateItemInBag={updateItemInBagSection}
+      deleteItemInBag={deleteItemInBagSection}
     />
   );
 };
