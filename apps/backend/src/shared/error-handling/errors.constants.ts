@@ -1,3 +1,3 @@
-export const API_ERRORS = {
-  INVALID_UUID: 'api.error.invalid_uuid',
+export const VALIDATION_ERRORS = {
+  INVALID: 'invalid',
 };
