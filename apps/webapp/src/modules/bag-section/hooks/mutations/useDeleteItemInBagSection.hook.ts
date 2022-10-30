@@ -9,7 +9,7 @@ export const useDeleteItemInBagSection = () => {
     graphqlClient,
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(['bagSection']);
+        queryClient.invalidateQueries(['bagSections']);
       },
     }
   );

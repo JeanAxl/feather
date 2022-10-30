@@ -1,4 +1,4 @@
-import { testingModuleFactory } from '../../../../../../utils/test/test.module';
+import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { BagSectionRepositoryPort } from '../../../domain/ports/bag-section-repositopry.port';
 import { AddItemInBagSectionCommand } from './add-item-in-bag-section.command';

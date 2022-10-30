@@ -1,4 +1,4 @@
-import { testingModuleFactory } from '../../../../../../utils/test/test.module';
+import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { fixtures } from './fixtures';
 import { GetBagSectionsQuery } from './get-bag-sections.query';

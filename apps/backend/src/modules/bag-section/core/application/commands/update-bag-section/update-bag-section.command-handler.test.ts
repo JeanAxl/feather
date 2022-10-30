@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { testingModuleFactory } from '../../../../../../utils/test/test.module';
+import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { BagSectionTypeOrmEntity } from '../../../../infrastructure/typeorm/bag-section/bag-section.typeorm-entity';
 import { fixtures } from './fixtures';

@@ -11,7 +11,7 @@ export const useUpdateInBagSection = () => {
     graphqlClient,
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(['bagSection']);
+        queryClient.invalidateQueries(['bagSections']);
       },
     }
   );

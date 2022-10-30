@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { testingModuleFactory } from '../../../../../../utils/test/test.module';
+import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { ItemTypeOrmEntity } from '../../../../infrastructure/typeorm/item/item.typeorm-entity';
 import { DeleteItemInBagSectionCommand } from './delete-item-in-bag-section.command';
