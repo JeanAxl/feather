@@ -33,16 +33,7 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
           bagSectionTotalWeight={bagSection.getTotalWeight()}
           bagSectionTotalItems={bagSection.getTotalItems()}
           bagSectionContentLength={bagSection.getContent().length}
-          addItemInBag={() =>
-            addItemInBag({
-              bagSectionId: bagSection.getId(),
-              id: '',
-              name: '',
-              description: '',
-              quantity: 0,
-              weight: 0,
-            })
-          }
+          addItemInBag={addItemInBag}
         />
       </Table>
     </TableContainer>
