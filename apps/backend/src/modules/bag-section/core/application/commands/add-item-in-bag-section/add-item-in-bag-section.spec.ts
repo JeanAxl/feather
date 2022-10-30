@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+import { API_ERRORS } from '../../../../../../shared/error-handling/errors.constants';
 import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { BagSectionRepositoryPort } from '../../../domain/ports/bag-section-repositopry.port';
@@ -15,8 +17,9 @@ describe('AddItemInBagSectionCommandHandler', () => {
   });
 
   it('should add an Item to a BagSection', async () => {
+    const newId = uuid();
     const command = new AddItemInBagSectionCommand({
-      id: '4',
+      id: newId,
       name: 'New item name',
       description: 'new item description',
       weight: 200,
@@ -26,6 +29,17 @@ describe('AddItemInBagSectionCommandHandler', () => {
 
     await commandHandler.execute(command);
     const bagSection = await bagSectionRepositoryAdapter.getBagSection('1');
-    expect(bagSection.items.find(({ id }) => id === '4')).toBeDefined();
+    expect(bagSection.items.find(({ id }) => id === newId)).toBeDefined();
+  });
+});
+
+describe('AddItemInBagSectionCommand', () => {
+  it('should throw an error when the id is not a valid uuid', () => {
+    expect(() => new AddItemInBagSectionCommand({ id: '' })).toThrowError(
+      new Error(API_ERRORS.INVALID_UUID)
+    );
+    expect(
+      () => new AddItemInBagSectionCommand({ id: 'sdjfkh-123' })
+    ).toThrowError(new Error(API_ERRORS.INVALID_UUID));
   });
 });
