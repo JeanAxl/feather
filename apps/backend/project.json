@@ -6,7 +6,7 @@
     "generate-gql-backend": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "yarn ts-node tools/graphql/generate-gql-types.ts"
+        "command": "tools/graphql/generate.sh"
       }
     },
 
