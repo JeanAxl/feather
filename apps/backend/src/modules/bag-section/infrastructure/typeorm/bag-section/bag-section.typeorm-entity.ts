@@ -9,6 +9,6 @@ export class BagSectionTypeOrmEntity {
   @Column()
   name!: string;
 
-  @OneToMany(() => ItemTypeOrmEntity, (item) => item.bagSectionId)
+  @OneToMany(() => ItemTypeOrmEntity, (item) => item.bagSection)
   items!: ItemTypeOrmEntity[];
 }
