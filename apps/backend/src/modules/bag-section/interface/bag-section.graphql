@@ -20,7 +20,7 @@ type Query {
 input AddItemInBagSectionInput {
   id: ID!
   name: String!
-  bagSectionId: String!
+  bagSectionId: String
   description: String
   quantity: Int
   weight: Float

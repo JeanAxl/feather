@@ -13,7 +13,7 @@ export type Scalars = {
 };
 
 export type AddItemInBagSectionInput = {
-  bagSectionId: Scalars['String'];
+  bagSectionId?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
   name: Scalars['String'];
@@ -84,6 +84,7 @@ export type UpdateBagSectionInput = {
 };
 
 export type UpdateItemInBagSectionInput = {
+  bagSectionId?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
   name?: InputMaybe<Scalars['String']>;
