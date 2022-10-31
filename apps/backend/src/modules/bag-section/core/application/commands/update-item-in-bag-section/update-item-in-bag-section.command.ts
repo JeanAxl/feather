@@ -1,8 +1,8 @@
 import { Item } from '../../../domain/item.entity';
 
-type UpdateItemInBagSectionCommandPayload = {
-  id: Item['id'] & Partial<Omit<Item, 'bagSectionId'>>;
-};
+export type UpdateItemInBagSectionCommandPayload = { id: string } & NonNullable<
+  Partial<Item>
+>;
 
 export class UpdateItemInBagSectionCommand {
   constructor(public readonly payload: UpdateItemInBagSectionCommandPayload) {}

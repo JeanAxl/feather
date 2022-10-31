@@ -32,6 +32,7 @@ import {
 } from '../core/application/queries/get-bag-sections/get-bag-sections.query';
 import {
   mapAddItemInBagSectionInputToPayload,
+  mapUpdateBagSectionInputToPayload,
   mapUpdateItemInBagSectionInputToPayload,
 } from './bag-section.mappers';
 
@@ -70,11 +71,7 @@ export class BagSectionResolver {
     await this.commandBus.execute<
       UpdateBagSectionCommand,
       UpdateBagSectionCommandResult
-    >(
-      new UpdateBagSectionCommand(
-        mapUpdateItemInBagSectionInputToPayload(input)
-      )
-    );
+    >(new UpdateBagSectionCommand(mapUpdateBagSectionInputToPayload(input)));
 
     return true;
   }
@@ -114,7 +111,11 @@ export class BagSectionResolver {
     await this.commandBus.execute<
       UpdateItemInBagSectionCommand,
       UpdateItemInBagSectionCommandResult
-    >(new UpdateItemInBagSectionCommand(input));
+    >(
+      new UpdateItemInBagSectionCommand(
+        mapUpdateItemInBagSectionInputToPayload(input)
+      )
+    );
 
     return true;
   }

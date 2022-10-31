@@ -30,6 +30,7 @@ input UpdateItemInBagSectionInput {
   id: ID!
   name: String
   description: String
+  bagSectionId: String
   quantity: Int
   weight: Float
 }

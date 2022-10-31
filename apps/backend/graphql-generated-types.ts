@@ -23,6 +23,7 @@ export class UpdateItemInBagSectionInput {
     id: string;
     name?: Nullable<string>;
     description?: Nullable<string>;
+    bagSectionId?: Nullable<string>;
     quantity?: Nullable<number>;
     weight?: Nullable<number>;
 }
