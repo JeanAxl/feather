@@ -4,7 +4,7 @@ type Item {
   description: String!
   quantity: Int!
   weight: Float!
-  bagSectionId: String!
+  bagSectionId: String
 }
 type BagSection {
   id: ID!

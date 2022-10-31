@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   Entity,
   JoinColumn,
@@ -8,26 +9,26 @@ import {
 import { BagSectionTypeOrmEntity } from '../bag-section/bag-section.typeorm-entity';
 
 @Entity()
-export class ItemTypeOrmEntity {
+export class ItemTypeOrmEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  description: string;
+  description!: string;
 
   @Column()
-  quantity: number;
+  quantity!: number;
 
   @Column()
-  weight: number;
+  weight!: number;
+
+  @Column({ nullable: true })
+  bagSectionId!: BagSectionTypeOrmEntity['id'] | null;
 
   @ManyToOne(() => BagSectionTypeOrmEntity)
   @JoinColumn()
-  bagSection: BagSectionTypeOrmEntity | undefined | null;
-
-  @Column({ nullable: true })
-  bagSectionId: BagSectionTypeOrmEntity['id'] | null;
+  bagSection!: BagSectionTypeOrmEntity | undefined | null;
 }

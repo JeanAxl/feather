@@ -30,7 +30,7 @@ export type BagSection = {
 
 export type Item = {
   __typename?: 'Item';
-  bagSectionId: Scalars['String'];
+  bagSectionId?: Maybe<Scalars['String']>;
   description: Scalars['String'];
   id: Scalars['ID'];
   name: Scalars['String'];

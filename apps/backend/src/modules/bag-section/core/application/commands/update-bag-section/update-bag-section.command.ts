@@ -3,7 +3,7 @@ import { BagSection } from '../../../domain/bag-section.entity';
 
 export type UpdateBagSectionCommandPayload = {
   id: string;
-  name?: string | null;
+  name?: string;
 };
 
 export class UpdateBagSectionCommand implements ICommand {
@@ -11,5 +11,5 @@ export class UpdateBagSectionCommand implements ICommand {
 }
 
 export type UpdateBagSectionCommandResult = {
-  bagSection: BagSection;
+  bagSection: BagSection | null;
 };

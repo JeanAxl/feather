@@ -29,7 +29,7 @@ describe('AddItemInBagSectionCommandHandler', () => {
 
     await commandHandler.execute(command);
     const bagSection = await bagSectionRepositoryAdapter.getBagSection('1');
-    expect(bagSection.items.find(({ id }) => id === newId)).toBeDefined();
+    expect(bagSection?.items.find(({ id }) => id === newId)).toBeDefined();
   });
 });
 

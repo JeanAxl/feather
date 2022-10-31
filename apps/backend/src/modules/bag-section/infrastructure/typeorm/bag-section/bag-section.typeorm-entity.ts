@@ -4,11 +4,11 @@ import { ItemTypeOrmEntity } from '../item/item.typeorm-entity';
 @Entity()
 export class BagSectionTypeOrmEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
-  @OneToMany(() => ItemTypeOrmEntity, (item) => item.bagSection)
-  items: ItemTypeOrmEntity[];
+  @OneToMany(() => ItemTypeOrmEntity, (item) => item.bagSectionId)
+  items!: ItemTypeOrmEntity[];
 }

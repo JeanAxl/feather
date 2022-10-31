@@ -12,6 +12,7 @@
     "module": "esnext",
     "lib": ["ES2022", "dom"],
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {

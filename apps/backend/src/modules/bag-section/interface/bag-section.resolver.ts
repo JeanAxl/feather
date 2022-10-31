@@ -30,6 +30,10 @@ import {
   GetBagSectionsQuery,
   GetBagSectionsQueryResult,
 } from '../core/application/queries/get-bag-sections/get-bag-sections.query';
+import {
+  mapAddItemInBagSectionInputToPayload,
+  mapUpdateItemInBagSectionInputToPayload,
+} from './bag-section.mappers';
 
 @Resolver('BagSection')
 export class BagSectionResolver {
@@ -46,7 +50,7 @@ export class BagSectionResolver {
       GetBagSectionQuery,
       GetBagSectionQueryResult
     >(new GetBagSectionQuery({ id }));
-    return { ...result };
+    return result;
   }
 
   @Query()
@@ -55,6 +59,7 @@ export class BagSectionResolver {
       GetBagSectionsQuery,
       GetBagSectionsQueryResult
     >(new GetBagSectionsQuery());
+
     return result;
   }
 
@@ -65,7 +70,11 @@ export class BagSectionResolver {
     await this.commandBus.execute<
       UpdateBagSectionCommand,
       UpdateBagSectionCommandResult
-    >(new UpdateBagSectionCommand(input));
+    >(
+      new UpdateBagSectionCommand(
+        mapUpdateItemInBagSectionInputToPayload(input)
+      )
+    );
 
     return true;
   }
@@ -89,7 +98,11 @@ export class BagSectionResolver {
     await this.commandBus.execute<
       AddItemInBagSectionCommand,
       AddItemInBagSectionCommandResult
-    >(new AddItemInBagSectionCommand(input));
+    >(
+      new AddItemInBagSectionCommand(
+        mapAddItemInBagSectionInputToPayload(input)
+      )
+    );
 
     return true;
   }

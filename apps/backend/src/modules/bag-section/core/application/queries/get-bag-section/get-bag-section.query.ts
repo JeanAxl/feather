@@ -6,4 +6,4 @@ export class GetBagSectionQuery {
   constructor(public readonly payload: GetBagSectionQueryPayload) {}
 }
 
-export type GetBagSectionQueryResult = BagSection;
+export type GetBagSectionQueryResult = BagSection | null;

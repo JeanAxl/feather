@@ -28,7 +28,7 @@ Fixtures : "${JSON.stringify(fixture.items)}`
     await queryRunner.commitTransaction();
   } catch (error) {
     await queryRunner.rollbackTransaction();
-    throw new Error(error);
+    throw new Error(error as string);
   } finally {
     await queryRunner.release();
   }

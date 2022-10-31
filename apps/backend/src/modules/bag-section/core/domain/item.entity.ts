@@ -1,8 +1,8 @@
 export class Item {
-  id: string;
-  name: string;
-  description: string;
-  quantity: number;
-  weight: number;
-  bagSectionId: string | null;
+  id!: string;
+  name!: string;
+  quantity!: number;
+  description!: string;
+  weight!: number;
+  bagSectionId!: string | null;
 }
