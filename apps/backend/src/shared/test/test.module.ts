@@ -23,8 +23,9 @@ export const testingModuleFactory = async (
   imports: ModuleMetadata['imports'],
   fixtures: Fixture[] = []
 ): Promise<[NestNestingModule, DataSource]> => {
+  const importsArray = imports ? [...imports] : [];
   const module = await Test.createTestingModule({
-    imports: [TestingModule],
+    imports: [TestingModule, ...importsArray],
   }).compile();
 
   const dataSource = module.get(DataSource);
