@@ -7,7 +7,7 @@ export type AddItemInBagSectionCommandPayload = NonNullable<Item>;
 
 export class AddItemInBagSectionCommand implements ICommand {
   constructor(public readonly payload: AddItemInBagSectionCommandPayload) {
-    if (payload.id && !uuid.validate(payload.id)) {
+    if (payload.id === '' || (!!payload.id && !uuid.validate(payload.id))) {
       throw new Error(VALIDATION_ERRORS.INVALID);
     }
     if (payload.quantity < 0) {
