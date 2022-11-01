@@ -13,12 +13,12 @@ export type Scalars = {
 };
 
 export type AddItemInBagSectionInput = {
-  bagSectionId?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
+  bagSectionId: Scalars['String'];
+  description: Scalars['String'];
   id: Scalars['ID'];
   name: Scalars['String'];
-  quantity?: InputMaybe<Scalars['Int']>;
-  weight?: InputMaybe<Scalars['Float']>;
+  quantity: Scalars['Int'];
+  weight: Scalars['Float'];
 };
 
 export type BagSection = {

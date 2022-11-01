@@ -31,7 +31,6 @@ import {
   GetBagSectionsQueryResult,
 } from '../core/application/queries/get-bag-sections/get-bag-sections.query';
 import {
-  mapAddItemInBagSectionInputToPayload,
   mapUpdateBagSectionInputToPayload,
   mapUpdateItemInBagSectionInputToPayload,
 } from './bag-section.mappers';
@@ -95,11 +94,7 @@ export class BagSectionResolver {
     await this.commandBus.execute<
       AddItemInBagSectionCommand,
       AddItemInBagSectionCommandResult
-    >(
-      new AddItemInBagSectionCommand(
-        mapAddItemInBagSectionInputToPayload(input)
-      )
-    );
+    >(new AddItemInBagSectionCommand(input));
 
     return true;
   }

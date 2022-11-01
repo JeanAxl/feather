@@ -13,10 +13,10 @@
 export class AddItemInBagSectionInput {
     id: string;
     name: string;
-    bagSectionId?: Nullable<string>;
-    description?: Nullable<string>;
-    quantity?: Nullable<number>;
-    weight?: Nullable<number>;
+    bagSectionId: string;
+    description: string;
+    quantity: number;
+    weight: number;
 }
 
 export class UpdateItemInBagSectionInput {
