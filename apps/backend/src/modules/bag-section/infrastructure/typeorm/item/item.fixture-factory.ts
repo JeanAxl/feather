@@ -4,7 +4,6 @@ import { ItemTypeOrmEntity } from './item.typeorm-entity';
 export const itemFixtureFactory = (
   input: Partial<ItemTypeOrmEntity>
 ): ItemTypeOrmEntity => {
-  console.log(new ItemTypeOrmEntity());
   return Object.assign(new ItemTypeOrmEntity(), {
     id: faker.datatype.uuid() as ItemTypeOrmEntity['id'],
     bagSectionId: faker.datatype.uuid(),
