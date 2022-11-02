@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { ItemTypeOrmEntity } from '../../../../infrastructure/typeorm/item/item.typeorm-entity';
-import { fixtures } from './fixtures';
+import { bagSectionId, fixtures, itemIdOne } from './fixtures';
 import { UpdateItemInBagSectionCommand } from './update-item-in-bag-section.command';
 import { UpdateItemInBagSectionCommandHandler } from './update-item-in-bag-section.command-handler';
 describe('UpdateItemInBagSectionCommandHandler', () => {
@@ -19,7 +19,7 @@ describe('UpdateItemInBagSectionCommandHandler', () => {
 
   it('should update an item', async () => {
     const command = new UpdateItemInBagSectionCommand({
-      id: '1',
+      id: itemIdOne,
       name: 'newName',
       description: 'newDescription',
       weight: 20000,
@@ -27,15 +27,16 @@ describe('UpdateItemInBagSectionCommandHandler', () => {
     });
     await commandHandler.execute(command);
     const updatedItem = await itemRepository.findOneOrFail({
-      where: { id: '1' },
+      where: { id: itemIdOne },
     });
     expect({ ...updatedItem }).toStrictEqual({
-      id: '1',
+      id: itemIdOne,
       name: 'newName',
       description: 'newDescription',
-      bagSectionId: '1',
+      bagSectionId: bagSectionId,
       weight: 20000,
       quantity: 42,
+      bagSection: undefined,
     });
   });
 });

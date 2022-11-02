@@ -13,5 +13,6 @@ describe('GetBagSectionsQueryHandler', () => {
   it('should return the BagSection items', async () => {
     const result = await queryHandler.execute(new GetBagSectionsQuery());
     expect(result.length).toEqual(1);
+    expect(result[0].items.length).toEqual(3);
   });
 });

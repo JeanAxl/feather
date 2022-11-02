@@ -2,9 +2,10 @@ import { Repository } from 'typeorm';
 import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { BagSectionTypeOrmEntity } from '../../../../infrastructure/typeorm/bag-section/bag-section.typeorm-entity';
-import { fixtures } from './fixtures';
+import { bagSectionIdOne, fixtures } from './fixtures';
 import { UpdateBagSectionCommand } from './update-bag-section.command';
 import { UpdateBagSectionCommandHandler } from './update-bag-section.command-handler';
+
 describe('UpdateBagSectionCommandHandler', () => {
   let commandHandler: UpdateBagSectionCommandHandler;
   let bagSectionRepository: Repository<BagSectionTypeOrmEntity>;
@@ -19,14 +20,17 @@ describe('UpdateBagSectionCommandHandler', () => {
 
   it('should update the BagSection', async () => {
     await commandHandler.execute(
-      new UpdateBagSectionCommand({ id: '1', name: 'newName' })
+      new UpdateBagSectionCommand({ id: bagSectionIdOne, name: 'newName' })
     );
 
-    const bagSection = await bagSectionRepository.findOneBy({ id: '1' });
+    const bagSection = await bagSectionRepository.findOneBy({
+      id: bagSectionIdOne,
+    });
 
     expect({ ...bagSection }).toStrictEqual({
-      id: '1',
+      id: bagSectionIdOne,
       name: 'newName',
+      items: undefined,
     });
   });
 });
