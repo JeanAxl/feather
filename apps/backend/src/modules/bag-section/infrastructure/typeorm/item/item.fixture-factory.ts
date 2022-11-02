@@ -6,7 +6,6 @@ export const itemFixtureFactory = (
 ): ItemTypeOrmEntity => {
   return Object.assign(new ItemTypeOrmEntity(), {
     id: faker.datatype.uuid() as ItemTypeOrmEntity['id'],
-    bagSectionId: faker.datatype.uuid(),
     name: faker.commerce.product(),
     description: faker.commerce.productDescription(),
     quantity: faker.datatype.number(100),
