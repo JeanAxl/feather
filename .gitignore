@@ -43,5 +43,5 @@ Thumbs.db
 *.log
 
 # DB
-:serve:
+:serve:*
 :test:
