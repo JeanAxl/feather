@@ -4,7 +4,16 @@ export type ItemReadModel = {
   description: string;
   quantity: number;
   weight: number;
-  bagSectionId: string | null;
+  bagSectionId?: string | undefined | null;
+};
+
+export type ItemWriteModel = {
+  id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  weight: number;
+  bagSectionId: string;
 };
 
 export const itemFixtureFactory = (): ItemReadModel => ({

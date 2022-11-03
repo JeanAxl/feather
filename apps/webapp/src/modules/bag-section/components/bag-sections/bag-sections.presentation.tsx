@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import { BagSection } from '../../core/domain/bag.model';
-import { ItemReadModel } from '../../core/domain/item.model';
+import { ItemReadModel, ItemWriteModel } from '../../core/domain/item.model';
 import { BagSectionComponent } from '../bag-section/bag-section.presentation';
 
 type Props = {
   bagSections: BagSection[];
-  addItemInBag: (item: ItemReadModel) => void;
+  addItemInBag: (item: ItemWriteModel) => void;
   updateItemInBag: (
     id: ItemReadModel['id'],
     input: Partial<ItemReadModel>

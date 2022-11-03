@@ -1,18 +1,18 @@
 import { Button, Tfoot, Th, Tr } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 import * as uuid from 'uuid';
-import { ItemReadModel } from '../../../core/domain/item.model';
+import { ItemWriteModel } from '../../../core/domain/item.model';
 type Props = {
   bagSectionTotalWeight: number;
-  bagSectionContentLength: number;
   bagSectionTotalItems: number;
-  addItemInBag: (item: ItemReadModel) => void;
+  bagSectionId: string;
+  addItemInBag: (item: ItemWriteModel) => void;
 };
 
 export const TableFoot: FunctionComponent<Props> = ({
   bagSectionTotalWeight,
-  bagSectionContentLength,
   bagSectionTotalItems,
+  bagSectionId,
   addItemInBag,
 }) => {
   return (
@@ -25,7 +25,7 @@ export const TableFoot: FunctionComponent<Props> = ({
             onClick={() => {
               addItemInBag({
                 id: uuid.v4(),
-                bagSectionId: '1',
+                bagSectionId,
                 name: 'New item ' + new Date().getTime(),
                 description: '',
                 quantity: 0,
