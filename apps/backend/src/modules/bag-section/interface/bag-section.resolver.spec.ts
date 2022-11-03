@@ -6,6 +6,7 @@ import { testingModuleFactory } from '../../../shared/test/test.module';
 import { BagSectionModule } from '../bag-section.module';
 import { ItemTypeOrmEntity } from '../infrastructure/typeorm/item/item.typeorm-entity';
 import { bagSection, bagSectionId, fixtures, item } from './fixtures';
+
 describe('BagSectionResolver', () => {
   let app: INestApplication;
   let itemRepository: Repository<ItemTypeOrmEntity>;
@@ -44,16 +45,7 @@ describe('BagSectionResolver', () => {
       expect(body?.data?.bagSection).toStrictEqual({
         id: bagSection.id,
         name: bagSection.name,
-        items: [
-          {
-            id: item.id,
-            name: item.name,
-            description: item.description,
-            weight: item.weight,
-            quantity: item.quantity,
-            bagSectionId: item.bagSectionId,
-          },
-        ],
+        items: [item.toObject()],
       });
     });
   });
