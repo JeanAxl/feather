@@ -31,4 +31,10 @@ export class ItemTypeOrmEntity extends BaseEntity {
 
   @Column({ nullable: true })
   bagSectionId!: BagSectionTypeOrmEntity['id'] | null;
+
+  public toObject() {
+    return Object.fromEntries(
+      Object.entries({ ...this }).filter(([, v]) => !!v)
+    );
+  }
 }
