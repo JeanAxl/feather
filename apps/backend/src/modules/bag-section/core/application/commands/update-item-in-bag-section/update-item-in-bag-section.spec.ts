@@ -1,4 +1,5 @@
-import { Repository } from 'typeorm';
+import { TestingModule } from '@nestjs/testing';
+import { DataSource, Repository } from 'typeorm';
 import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { ItemTypeOrmEntity } from '../../../../infrastructure/typeorm/item/item.typeorm-entity';
@@ -8,13 +9,20 @@ import { UpdateItemInBagSectionCommandHandler } from './update-item-in-bag-secti
 describe('UpdateItemInBagSectionCommandHandler', () => {
   let commandHandler: UpdateItemInBagSectionCommandHandler;
   let itemRepository: Repository<ItemTypeOrmEntity>;
+  let dataSource: DataSource;
+  let module: TestingModule;
+
   beforeAll(async () => {
-    const [module, dataSource] = await testingModuleFactory(
+    [module, dataSource] = await testingModuleFactory(
       [BagSectionModule],
       fixtures
     );
     commandHandler = module.get(UpdateItemInBagSectionCommandHandler);
     itemRepository = dataSource.getRepository(ItemTypeOrmEntity);
+  });
+
+  afterAll(async () => {
+    await dataSource.destroy();
   });
 
   it('should update an item', async () => {

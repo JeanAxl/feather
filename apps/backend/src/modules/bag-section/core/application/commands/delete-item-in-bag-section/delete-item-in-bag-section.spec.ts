@@ -1,16 +1,20 @@
-import { Repository } from 'typeorm';
+import { TestingModule } from '@nestjs/testing';
+import { DataSource, Repository } from 'typeorm';
 import { testingModuleFactory } from '../../../../../../shared/test/test.module';
 import { BagSectionModule } from '../../../../bag-section.module';
 import { ItemTypeOrmEntity } from '../../../../infrastructure/typeorm/item/item.typeorm-entity';
 import { DeleteItemInBagSectionCommand } from './delete-item-in-bag-section.command';
 import { DeleteItemInBagSectionCommandHandler } from './delete-item-in-bag-section.command-handler';
-import { fixtures } from './fixtures';
+import { fixtures, itemId } from './fixtures';
 
 describe('DeleteItemInBagSectionCommandHandler', () => {
   let commandHandler: DeleteItemInBagSectionCommandHandler;
   let itemRepository: Repository<ItemTypeOrmEntity>;
+  let dataSource: DataSource;
+  let module: TestingModule;
+
   beforeAll(async () => {
-    const [module, dataSource] = await testingModuleFactory(
+    [module, dataSource] = await testingModuleFactory(
       [BagSectionModule],
       fixtures
     );
@@ -18,8 +22,11 @@ describe('DeleteItemInBagSectionCommandHandler', () => {
     itemRepository = dataSource.getRepository(ItemTypeOrmEntity);
   });
 
+  afterAll(async () => {
+    await dataSource.destroy();
+  });
+
   it('should remove an item by id', async () => {
-    const itemId = '2';
     const command = new DeleteItemInBagSectionCommand({
       itemId,
     });

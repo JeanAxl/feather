@@ -1,6 +1,7 @@
 import { INestApplication } from '@nestjs/common';
+import { TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { testingModuleFactory } from '../../../shared/test/test.module';
 import { BagSectionModule } from '../bag-section.module';
@@ -10,8 +11,11 @@ import { bagSection, bagSectionId, fixtures, item } from './fixtures';
 describe('BagSectionResolver', () => {
   let app: INestApplication;
   let itemRepository: Repository<ItemTypeOrmEntity>;
+  let dataSource: DataSource;
+  let module: TestingModule;
+
   beforeAll(async () => {
-    const [module, dataSource] = await testingModuleFactory(
+    [module, dataSource] = await testingModuleFactory(
       [BagSectionModule],
       fixtures,
       true
@@ -21,7 +25,10 @@ describe('BagSectionResolver', () => {
     await app.init();
   });
 
-  afterAll(async () => await app.close());
+  afterAll(async () => {
+    await dataSource.destroy();
+    await app.close();
+  });
   describe('bagSection query', () => {
     it('should return a BagSection', async () => {
       const { body } = await request(app.getHttpServer())
