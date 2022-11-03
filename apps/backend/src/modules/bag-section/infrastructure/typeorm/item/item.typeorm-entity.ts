@@ -22,7 +22,7 @@ export class ItemTypeOrmEntity extends BaseEntity {
   @Column()
   quantity!: number;
 
-  @Column()
+  @Column({ type: 'float' })
   weight!: number;
 
   @ManyToOne(() => BagSectionTypeOrmEntity)
