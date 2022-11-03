@@ -10,7 +10,7 @@ export const loadFixtures = async (
   fixtures: Fixture[]
 ): Promise<void> => {
   try {
-    await queryRunner.startTransaction();
+    //await queryRunner.startTransaction();
     for (const fixture of fixtures) {
       try {
         const repository = queryRunner.manager.getRepository(fixture.tableName);
@@ -25,11 +25,11 @@ Fixtures : "${JSON.stringify(fixture.items)}`
         );
       }
     }
-    await queryRunner.commitTransaction();
+    // await queryRunner.commitTransaction();
   } catch (error) {
-    await queryRunner.rollbackTransaction();
+    // await queryRunner.rollbackTransaction();
     throw new Error(error as string);
   } finally {
-    await queryRunner.release();
+    // await queryRunner.release();
   }
 };
