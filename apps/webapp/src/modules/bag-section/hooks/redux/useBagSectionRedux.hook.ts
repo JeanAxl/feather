@@ -3,7 +3,7 @@ import {
   BagSection,
   bagSectionFixtureFactory,
 } from '../../core/domain/bag.model';
-import { Item } from '../../core/domain/item.model';
+import { ItemReadModel } from '../../core/domain/item.model';
 
 enum ACTIONS {
   ADD_ITEM = 'ADD_ITEM',
@@ -13,17 +13,17 @@ enum ACTIONS {
 
 type AddItemActions = {
   type: ACTIONS.ADD_ITEM;
-  payload: Item;
+  payload: ItemReadModel;
 };
 
 type UpdateItemAction = {
   type: ACTIONS.UPDATE_ITEM;
-  payload: { id: Item['id']; input: Partial<Item> };
+  payload: { id: ItemReadModel['id']; input: Partial<ItemReadModel> };
 };
 
 type DeleteItemAction = {
   type: ACTIONS.DELETE_ITEM;
-  payload: { id: Item['id'] };
+  payload: { id: ItemReadModel['id'] };
 };
 
 type ActionType = AddItemActions | UpdateItemAction | DeleteItemAction;
@@ -65,15 +65,18 @@ export const useBagSectionRedux = () => {
     bagSectionFixtureFactory()
   );
 
-  const addItemInBag = (item: Item) => {
+  const addItemInBag = (item: ItemReadModel) => {
     dispatch({ type: ACTIONS.ADD_ITEM, payload: item });
   };
 
-  const updateItemInBag = (id: Item['id'], input: Partial<Item>) => {
+  const updateItemInBag = (
+    id: ItemReadModel['id'],
+    input: Partial<ItemReadModel>
+  ) => {
     dispatch({ type: ACTIONS.UPDATE_ITEM, payload: { id, input } });
   };
 
-  const deleteItemInBag = (id: Item['id']) => {
+  const deleteItemInBag = (id: ItemReadModel['id']) => {
     dispatch({ type: ACTIONS.DELETE_ITEM, payload: { id } });
   };
 

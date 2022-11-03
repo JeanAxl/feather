@@ -2,7 +2,7 @@ import { useUpdateItemInBagSectionMutation } from '@feather/graphql-client';
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { graphqlClient } from '../../../../shared/graphql/client';
-import { Item } from '../../core/domain/item.model';
+import { ItemReadModel } from '../../core/domain/item.model';
 
 export const useUpdateInBagSection = () => {
   const queryClient = useQueryClient();
@@ -17,7 +17,7 @@ export const useUpdateInBagSection = () => {
   );
 
   const updateItemInBagSection = useCallback(
-    (id: Item['id'], input: Partial<Item>) => {
+    (id: ItemReadModel['id'], input: Partial<ItemReadModel>) => {
       updateItemInBagSectionMutation.mutate({ input: { id, ...input } });
     },
     [updateItemInBagSectionMutation]

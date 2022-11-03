@@ -14,12 +14,15 @@ import {
 } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 import { BagSection } from '../../../core/domain/bag.model';
-import { Item } from '../../../core/domain/item.model';
+import { ItemReadModel } from '../../../core/domain/item.model';
 
 type Props = {
   bagSectionContent: BagSection['items'];
-  updateItemInBag: (id: Item['id'], input: Partial<Item>) => void;
-  deleteItemInBag: (id: Item['id']) => void;
+  updateItemInBag: (
+    id: ItemReadModel['id'],
+    input: Partial<ItemReadModel>
+  ) => void;
+  deleteItemInBag: (id: ItemReadModel['id']) => void;
 };
 
 export const TableBody: FunctionComponent<Props> = ({
@@ -29,7 +32,7 @@ export const TableBody: FunctionComponent<Props> = ({
 }) => {
   return (
     <Tbody>
-      {bagSectionContent.map((item: Item) => (
+      {bagSectionContent.map((item: ItemReadModel) => (
         <Tr key={item.id}>
           <Td>
             <Flex minWidth="max-content" alignItems="center" gap="2">
@@ -81,9 +84,12 @@ export const TableBody: FunctionComponent<Props> = ({
 };
 
 type EditableCellProps = {
-  item: Item;
+  item: ItemReadModel;
   attribute: 'name' | 'description';
-  updateItemInBag: (id: Item['id'], input: Partial<Item>) => void;
+  updateItemInBag: (
+    id: ItemReadModel['id'],
+    input: Partial<ItemReadModel>
+  ) => void;
 };
 
 const EditableCell: FunctionComponent<EditableCellProps> = ({
@@ -105,9 +111,12 @@ const EditableCell: FunctionComponent<EditableCellProps> = ({
 };
 
 type EditableNumberCellProps = {
-  item: Item;
+  item: ItemReadModel;
   attribute: 'weight' | 'quantity';
-  updateItemInBag: (id: Item['id'], input: Partial<Item>) => void;
+  updateItemInBag: (
+    id: ItemReadModel['id'],
+    input: Partial<ItemReadModel>
+  ) => void;
 };
 
 const EditableNumberCell: FunctionComponent<EditableNumberCellProps> = ({

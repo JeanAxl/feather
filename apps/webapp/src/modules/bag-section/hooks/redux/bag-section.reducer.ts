@@ -4,7 +4,7 @@ import {
   BagSection,
   bagSectionFixtureFactory,
 } from '../../core/domain/bag.model';
-import { Item } from '../../core/domain/item.model';
+import { ItemReadModel } from '../../core/domain/item.model';
 
 export interface BagSectionState {
   value: BagSection;
@@ -18,13 +18,13 @@ export const bagSectionSlice = createSlice({
   name: 'bagSection',
   initialState,
   reducers: {
-    addItemInBag: (state, action: PayloadAction<Item>) => {
+    addItemInBag: (state, action: PayloadAction<ItemReadModel>) => {
       state.value = new BagSection(state.value.getId(), state.value.getName(), [
         ...state.value.getContent(),
         action.payload,
       ]);
     },
-    deleteItemInBag: (state, action: PayloadAction<Item['id']>) => {
+    deleteItemInBag: (state, action: PayloadAction<ItemReadModel['id']>) => {
       state.value = new BagSection(
         state.value.getId(),
         state.value.getName(),
@@ -33,7 +33,10 @@ export const bagSectionSlice = createSlice({
     },
     updateItemInBag: (
       state,
-      action: PayloadAction<{ id: Item['id']; input: Partial<Item> }>
+      action: PayloadAction<{
+        id: ItemReadModel['id'];
+        input: Partial<ItemReadModel>;
+      }>
     ) => {
       const newContent = state.value.getContent().map((item) => {
         if (item.id === action.payload.id) {

@@ -1,12 +1,12 @@
-import { Item } from './item.model';
+import { ItemReadModel } from './item.model';
 
 export class BagSection {
   constructor(
     private id: string,
     private name: string,
-    private items: Item[] = []
+    private items: ItemReadModel[] = []
   ) {}
-  public setContent(content: Item[]) {
+  public setContent(content: ItemReadModel[]) {
     this.items = content;
   }
 

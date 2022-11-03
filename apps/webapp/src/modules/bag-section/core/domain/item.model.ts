@@ -1,13 +1,13 @@
-export type Item = {
+export type ItemReadModel = {
   id: string;
   name: string;
   description: string;
   quantity: number;
   weight: number;
-  bagSectionId?: string | null;
+  bagSectionId: string | null;
 };
 
-export const itemFixtureFactory = (): Item => ({
+export const itemFixtureFactory = (): ItemReadModel => ({
   id: '1',
   name: 'ItemName',
   description: 'ItemDescription',
