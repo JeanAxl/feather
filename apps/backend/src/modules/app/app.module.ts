@@ -12,7 +12,7 @@ import { appTypeOrmEntities } from './infrastructure/typeorm/app.typeorm-entitie
       typePaths: ['apps/**/*.graphql'],
     }),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
+      type: 'better-sqlite3',
       database: ':serve:',
       dropSchema: true,
       entities: appTypeOrmEntities,
