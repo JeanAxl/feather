@@ -1,11 +1,16 @@
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
+  AddBagSectionInput,
   AddItemInBagSectionInput,
   UpdateBagSectionInput,
   UpdateItemInBagSectionInput,
 } from '../../../../graphql-generated-types';
 import { GraphQLReturn } from '../../../../graphql-return.type';
+import {
+  AddBagSectionCommand,
+  AddBagSectionCommandResult,
+} from '../core/application/commands/add-bag-section/add-bag-section.command';
 import {
   AddItemInBagSectionCommand,
   AddItemInBagSectionCommandResult,
@@ -71,6 +76,18 @@ export class BagSectionResolver {
       UpdateBagSectionCommand,
       UpdateBagSectionCommandResult
     >(new UpdateBagSectionCommand(mapUpdateBagSectionInputToPayload(input)));
+
+    return true;
+  }
+
+  @Mutation()
+  async addBagSection(
+    @Args('input') input: AddBagSectionInput
+  ): Promise<boolean> {
+    await this.commandBus.execute<
+      AddBagSectionCommand,
+      AddBagSectionCommandResult
+    >(new AddBagSectionCommand(input));
 
     return true;
   }

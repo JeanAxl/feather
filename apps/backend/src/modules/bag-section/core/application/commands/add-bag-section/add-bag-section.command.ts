@@ -9,4 +9,4 @@ export class AddBagSectionCommand implements ICommand {
   constructor(public readonly payload: AddBagSectionCommandPayload) {}
 }
 
-export type AddBagSectionResult = void;
+export type AddBagSectionCommandResult = void;

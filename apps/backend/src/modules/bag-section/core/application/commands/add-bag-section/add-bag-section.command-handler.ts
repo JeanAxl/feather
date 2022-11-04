@@ -2,7 +2,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { BagSectionRepositoryPort } from '../../../domain/ports/bag-section-repositopry.port';
 import {
   AddBagSectionCommand,
-  AddBagSectionResult,
+  AddBagSectionCommandResult,
 } from './add-bag-section.command';
 
 @CommandHandler(AddBagSectionCommand)
@@ -13,7 +13,7 @@ export class AddBagSectionCommandHandler implements ICommandHandler {
 
   public async execute({
     payload,
-  }: AddBagSectionCommand): Promise<AddBagSectionResult> {
+  }: AddBagSectionCommand): Promise<AddBagSectionCommandResult> {
     await this.bagSectionRepository.addBagSection(payload);
   }
 }
