@@ -34,8 +34,8 @@
       },
       "configurations": {
         "production": {
-          "optimization": true,
           "extractLicenses": true,
+          "optimization": true,
           "inspect": false,
           "fileReplacements": [
             {
@@ -47,7 +47,6 @@
         "firebase": {
           "outputPath": "dist/apps/firebase/backend",
           "main": "apps/backend/src/main.firebase.ts",
-          "optimization": true,
           "extractLicenses": true,
           "inspect": false,
           "fileReplacements": [
