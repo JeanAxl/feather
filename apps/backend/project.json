@@ -70,6 +70,13 @@
         }
       }
     },
+    "serve-firebase": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "buildTarget": "backend:build:firebase",
+        "command": "firebase serve --only functions "
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
