@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BagSection } from '../../../core/domain/bag-section.entity';
-import { BagSectionRepositoryPort } from '../../../core/domain/ports/bag-section-repositopry.port';
+import {
+  AddBagSectionInput,
+  BagSectionRepositoryPort,
+} from '../../../core/domain/ports/bag-section-repositopry.port';
 import { BagSectionTypeOrmEntity } from './bag-section.typeorm-entity';
 
 @Injectable()
@@ -28,5 +31,10 @@ export class BagSectionRepositoryAdapter implements BagSectionRepositoryPort {
     input: Partial<BagSection>
   ): Promise<void> {
     await this.typeOrmRepository.update(id, input);
+  }
+
+  public async addBagSection(input: AddBagSectionInput): Promise<void> {
+    const bagSection = this.typeOrmRepository.create(input);
+    await this.typeOrmRepository.save(bagSection);
   }
 }
