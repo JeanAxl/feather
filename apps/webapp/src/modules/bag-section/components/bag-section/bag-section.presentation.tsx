@@ -3,7 +3,6 @@ import { FunctionComponent } from 'react';
 
 import { BagSection } from '../../core/domain/bag.model';
 import { ItemReadModel, ItemWriteModel } from '../../core/domain/item.model';
-import { Header } from './sub-components/header';
 import { TableBody } from './sub-components/table-body';
 import { TableFoot } from './sub-components/table-foot';
 import { TableHead } from './sub-components/table-head';
@@ -25,7 +24,15 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
   deleteItemInBag,
 }) => {
   return (
-    <Box border="1px" borderColor="gray.200" borderRadius={'sm'}>
+    <Box
+      border="1px"
+      borderColor="gray.200"
+      borderRadius={'sm'}
+      boxShadow="md"
+      p="2"
+      rounded="md"
+      bg="white"
+    >
       <TableContainer>
         <Table variant="simple" size="sm">
           <TableHead bagSection={bagSection} />
