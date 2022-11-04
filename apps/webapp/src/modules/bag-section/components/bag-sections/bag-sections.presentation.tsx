@@ -13,12 +13,14 @@ type Props = {
     input: Partial<ItemReadModel>
   ) => void;
   deleteItemInBag: (id: ItemReadModel['id']) => void;
+  addBagSection: () => void;
 };
 export const BagSectionsComponent: FunctionComponent<Props> = ({
   bagSections,
   addItemInBag,
   updateItemInBag,
   deleteItemInBag,
+  addBagSection,
 }) => {
   return (
     <SimpleGrid columns={1} spacing={6}>
@@ -31,7 +33,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
           deleteItemInBag={deleteItemInBag}
         />
       ))}
-      <AddBagSection />
+      <AddBagSection addBagSection={addBagSection} />
     </SimpleGrid>
   );
 };

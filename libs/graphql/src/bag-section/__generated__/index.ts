@@ -1,3 +1,4 @@
+export * from './add-bag-section.mutation.generated';
 export * from './add-item-in-bag-section.mutation.generated';
 export * from './bag-section.query.generated';
 export * from './bag-sections.query.generated';
