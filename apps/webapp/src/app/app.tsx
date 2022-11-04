@@ -8,8 +8,7 @@ export function App() {
       width={'90%'}
       margin={'auto'}
       templateAreas={`"header header"
-                  "nav main"
-                  "nav footer"`}
+                  "nav main"`}
       gridTemplateRows={'150px 1fr 30px'}
       gridTemplateColumns={'150px 1fr'}
       height="100%"
@@ -22,14 +21,9 @@ export function App() {
           Feather
         </Heading>
       </GridItem>
-      <GridItem pl="2" bg="pink.100" area={'nav'}>
-        Nav
-      </GridItem>
+      <GridItem pl="2" bg="pink.100" area={'nav'}></GridItem>
       <GridItem pl="2" area={'main'}>
         <BagSectionsContainer />
-      </GridItem>
-      <GridItem pl="2" bg="blue.100" area={'footer'}>
-        Footer
       </GridItem>
     </Grid>
   );
