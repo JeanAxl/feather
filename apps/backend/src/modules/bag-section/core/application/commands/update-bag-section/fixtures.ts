@@ -6,6 +6,9 @@ export const fixtures = [
   {
     tableName: BagSectionTypeOrmEntity.name,
 
-    items: [bagSectionFixtureFactory({ id: bagSectionIdOne })],
+    items: [
+      bagSectionFixtureFactory({ id: bagSectionIdOne }),
+      bagSectionFixtureFactory({}),
+    ],
   },
 ];

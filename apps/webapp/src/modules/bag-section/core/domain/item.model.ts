@@ -16,11 +16,14 @@ export type ItemWriteModel = {
   bagSectionId: string;
 };
 
-export const itemFixtureFactory = (): ItemReadModel => ({
+export const itemFixtureFactory = (
+  input: Partial<ItemReadModel> = {}
+): ItemReadModel => ({
   id: '1',
   name: 'ItemName',
   description: 'ItemDescription',
   quantity: 1,
   weight: 1,
   bagSectionId: '1',
+  ...input,
 });

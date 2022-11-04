@@ -1,7 +1,9 @@
+import { SimpleGrid } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 import { BagSection } from '../../core/domain/bag.model';
 import { ItemReadModel, ItemWriteModel } from '../../core/domain/item.model';
 import { BagSectionComponent } from '../bag-section/bag-section.presentation';
+import { AddBagSection } from '../bag-section/sub-components/add-bag-section';
 
 type Props = {
   bagSections: BagSection[];
@@ -19,7 +21,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
   deleteItemInBag,
 }) => {
   return (
-    <div>
+    <SimpleGrid columns={1} spacing={6}>
       {bagSections.map((bagSection) => (
         <BagSectionComponent
           key={bagSection.getId()}
@@ -29,6 +31,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
           deleteItemInBag={deleteItemInBag}
         />
       ))}
-    </div>
+      <AddBagSection />
+    </SimpleGrid>
   );
 };
