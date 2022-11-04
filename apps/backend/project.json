@@ -53,7 +53,7 @@
           "fileReplacements": [
             {
               "replace": "apps/backend/src/environments/environment.ts",
-              "with": "apps/backend/src/environments/environment.prod.ts"
+              "with": "apps/backend/src/environments/environment.firebase.ts"
             }
           ]
         }
@@ -68,6 +68,13 @@
         "production": {
           "buildTarget": "backend:build:production"
         }
+      }
+    },
+    "serve-firebase": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "buildTarget": "backend:build:firebase",
+        "command": "firebase serve --only functions "
       }
     },
     "lint": {

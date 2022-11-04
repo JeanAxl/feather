@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import { Loader } from '../../../../shared/components/loader/loader';
 import { useAddItemInBagSection } from '../../hooks/mutations/useAddItemInBagSection.hook';
 import { useDeleteItemInBagSection } from '../../hooks/mutations/useDeleteItemInBagSection.hook';
 import { useUpdateInBagSection } from '../../hooks/mutations/useUpdateItemInBagSection.hook';
@@ -12,10 +13,15 @@ export const BagSectionsContainer: FunctionComponent = () => {
   const { deleteItemInBagSection } = useDeleteItemInBagSection();
 
   if (isLoading) {
-    return <div>IS LOADING</div>;
+    return <Loader />;
   }
+
   if (isError) {
     return <div>IS ERROR</div>;
+  }
+
+  if (bagSections.length === 0) {
+    return <div>IS EMPTY</div>;
   }
 
   return (

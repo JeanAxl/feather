@@ -5,15 +5,18 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import * as express from 'express';
 import * as functions from 'firebase-functions';
 import { AppModule } from './modules/app/app.module';
-
 const port = process.env.PORT || 5001;
 const server = express();
 
 export const createApp = async (expressInstance) => {
-  const appServer = await NestFactory.create(AppModule, expressInstance);
+  const appServer = await NestFactory.create(
+    AppModule,
+    new ExpressAdapter(expressInstance)
+  );
   return appServer;
 };
 
