@@ -40,9 +40,15 @@ input UpdateBagSectionInput {
   name: String
 }
 
+input AddBagSectionInput {
+  id: String!
+  name: String!
+}
+
 type Mutation {
   updateBagSection(bagSectionId: ID, input: UpdateBagSectionInput): Boolean!
   updateItemInBagSection(input: UpdateItemInBagSectionInput): Boolean!
   addItemInBagSection(input: AddItemInBagSectionInput): Boolean!
   deleteItemInBagSection(itemId: ID!): Boolean!
+  addBagSection(input: AddBagSectionInput): Boolean!
 }

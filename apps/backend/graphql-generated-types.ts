@@ -33,6 +33,11 @@ export class UpdateBagSectionInput {
     name?: Nullable<string>;
 }
 
+export class AddBagSectionInput {
+    id: string;
+    name: string;
+}
+
 export class Item {
     id: string;
     name: string;
@@ -62,6 +67,8 @@ export abstract class IMutation {
     abstract addItemInBagSection(input?: Nullable<AddItemInBagSectionInput>): boolean | Promise<boolean>;
 
     abstract deleteItemInBagSection(itemId: string): boolean | Promise<boolean>;
+
+    abstract addBagSection(input?: Nullable<AddBagSectionInput>): boolean | Promise<boolean>;
 }
 
 type Nullable<T> = T | null;
