@@ -14,7 +14,7 @@ import { appTypeOrmEntities } from './infrastructure/typeorm/app.typeorm-entitie
     }),
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: ':serve:',
+      database: ':memory:',
       dropSchema: true,
       entities: appTypeOrmEntities,
       synchronize: true,

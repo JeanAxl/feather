@@ -11,7 +11,7 @@ import { Fixture, loadFixtures } from './fixtures.utils';
   imports: [
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: ':test:',
+      database: ':memory:',
       entities: appTypeOrmEntities,
       synchronize: true,
       keepConnectionAlive: false,
