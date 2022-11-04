@@ -53,7 +53,7 @@
           "fileReplacements": [
             {
               "replace": "apps/backend/src/environments/environment.ts",
-              "with": "apps/backend/src/environments/environment.prod.ts"
+              "with": "apps/backend/src/environments/environment.firebase.ts"
             }
           ]
         }
