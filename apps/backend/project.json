@@ -11,7 +11,7 @@
     },
 
     "build": {
-      "executor": "@nrwl/webpack:webpack",
+      "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "target": "node",
@@ -36,6 +36,7 @@
         "production": {
           "extractLicenses": true,
           "optimization": true,
+          "webpackConfig": "apps/backend/backend.webpack.js",
           "inspect": false,
           "fileReplacements": [
             {
@@ -48,6 +49,8 @@
           "outputPath": "dist/apps/firebase/backend",
           "main": "apps/backend/src/main.firebase.ts",
           "extractLicenses": true,
+          "webpackConfig": "apps/backend/backend.webpack.js",
+          "optimization": true,
           "inspect": false,
           "fileReplacements": [
             {
