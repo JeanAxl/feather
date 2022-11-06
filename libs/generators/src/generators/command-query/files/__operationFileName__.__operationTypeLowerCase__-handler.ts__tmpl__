@@ -1,0 +1,22 @@
+import {
+  <%= operationTypeCapitalized %>Handler,
+  I<%= operationTypeCapitalized %>Handler,
+} from '@nestjs/cqrs';
+
+import {
+  <%= operationNameCapitalized %><%= operationTypeCapitalized %>,
+  <%= operationNameCapitalized %><%= operationTypeCapitalized %>Result,
+} from './<%= operationFileName %>.<%= operationTypeLowerCase %>';
+
+<%= operationTypeCapitalized %>Handler(
+  <%= operationNameCapitalized %><%= operationTypeCapitalized %>
+);
+export class <%= operationNameCapitalized %><%= operationTypeCapitalized %>Handler
+  implements I<%= operationTypeCapitalized %>Handler
+{
+  constructor() {}
+
+  public async execute({
+    payload,
+  }: <%= operationNameCapitalized %><%= operationTypeCapitalized %>): Promise<<%= operationNameCapitalized %><%= operationTypeCapitalized %>Result> {}
+}

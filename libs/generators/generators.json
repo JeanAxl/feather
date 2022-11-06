@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "generators",
+  "version": "0.0.1",
+  "generators": {
+    "command-query": {
+      "factory": "./src/generators/command-query/generator",
+      "schema": "./src/generators/command-query/schema.json",
+      "description": "command-query generator"
+    }
+  }
+}

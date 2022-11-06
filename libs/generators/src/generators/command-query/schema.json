@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "CommandQuery",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the name of the operation ?"
+    },
+    "type": {
+      "type": "string",
+      "description": "Operation type",
+      "alias": "t",
+      "x-prompt": {
+        "message": "Which type of operation would you like to generate ?",
+        "type": "list",
+        "items": [
+          {
+            "value": "c",
+            "label": "Command"
+          },
+          {
+            "value": "q",
+            "label": "Query"
+          }
+        ]
+      }
+    },
+    "module": {
+      "type": "string",
+      "description": "Module in where the command / query will be added",
+      "alias": "m",
+      "x-prompt": "In which module do you want to add the operation"
+    }
+  },
+  "required": ["name"]
+}

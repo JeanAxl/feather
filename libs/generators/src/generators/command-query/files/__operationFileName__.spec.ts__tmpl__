@@ -1,0 +1,19 @@
+import { TestingModule } from '@nestjs/testing';
+import { DataSource } from 'typeorm';
+import { testingModuleFactory } from '../../../../../../shared/test/test.module';
+import { <%= moduleNameCapitalized %>Module } from '../../../../bag-section.module';
+import { <%= operationNameCapitalized %><%= operationTypeCapitalized %>Handler } from './<%= operationFileName %>.<%= operationTypeLowerCase %>-handler';
+describe('<%= operationNameCapitalized %><%= operationTypeCapitalized %>Handler', () => {
+  let handler: <%= operationNameCapitalized %><%= operationTypeCapitalized %>Handler;
+  let dataSource: DataSource;
+  let module: TestingModule;
+
+  beforeAll(async () => {
+    [module, dataSource] = await testingModuleFactory([<%= moduleNameCapitalized %>Module], []);
+    handler = module.get(<%= operationNameCapitalized %><%= operationTypeCapitalized %>Handler);
+  });
+
+  afterAll(async () => {
+    await dataSource.destroy();
+  });
+});

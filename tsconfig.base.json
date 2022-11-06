@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@feather/generators": ["libs/generators/src/index.ts"],
       "@feather/graphql-client": ["libs/graphql/src/index.ts"]
     }
   },
