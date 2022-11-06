@@ -1,69 +1,69 @@
 import {
-  addProjectConfiguration,
   formatFiles,
   generateFiles,
-  getWorkspaceLayout,
+  joinPathFragments,
   names,
-  offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
-import * as path from 'path';
 import { CommandQueryGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends CommandQueryGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
+interface NormalizedSchema {
+  operationDirectory: string;
+  operationFileName: string;
+  operationNameCapitalized: string;
+  operationTypeLowerCase: string;
+  operationTypeCapitalized: string;
+  moduleNameCapitalized: string;
 }
 
-function normalizeOptions(tree: Tree, options: CommandQueryGeneratorSchema): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
+function normalizeOptions(
+  tree: Tree,
+  options: CommandQueryGeneratorSchema
+): NormalizedSchema {
+  const operationName = names(`${options.name}`);
+  const moduleName = names(options.module);
+  const operationNameCapitalized = operationName.className;
+  const operationTypeLowerCase = options.type === 'c' ? 'command' : 'query';
+  const operationTypeCapitalized = options.type === 'c' ? 'Command' : 'Query';
+  const moduleDirectory = `apps/backend/src/modules/${
+    moduleName.fileName
+  }/core/application/${options.type === 'c' ? 'commands' : 'queries'}`;
+  const moduleNameCapitalized = moduleName.className;
+  const operationDirectory = joinPathFragments(
+    `${moduleDirectory}`,
+    `${operationName.fileName}`
+  );
+  const operationFileName = operationName.fileName;
+  console.log(operationDirectory);
 
   return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
+    operationDirectory,
+    operationFileName,
+    operationTypeLowerCase,
+    operationTypeCapitalized,
+    operationNameCapitalized,
+    moduleNameCapitalized,
   };
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
-    const templateOptions = {
-      ...options,
-      ...names(options.name),
-      offsetFromRoot: offsetFromRoot(options.projectRoot),
-      template: ''
-    };
-    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
-}
-
-export default async function (tree: Tree, options: CommandQueryGeneratorSchema) {
-  const normalizedOptions = normalizeOptions(tree, options);
-  addProjectConfiguration(
+  generateFiles(
     tree,
-    normalizedOptions.projectName,
+    joinPathFragments(__dirname, 'files'),
+    options.operationDirectory,
     {
-      root: normalizedOptions.projectRoot,
-      projectType: 'library',
-      sourceRoot: `${normalizedOptions.projectRoot}/src`,
-      targets: {
-        build: {
-          executor: "@feather/generators:build",
-        },
-      },
-      tags: normalizedOptions.parsedTags,
+      ...options,
+      tmpl: '',
     }
   );
+}
+
+export default async function (
+  tree: Tree,
+  options: CommandQueryGeneratorSchema
+) {
+  const normalizedOptions = normalizeOptions(tree, options);
+
   addFiles(tree, normalizedOptions);
   await formatFiles(tree);
 }

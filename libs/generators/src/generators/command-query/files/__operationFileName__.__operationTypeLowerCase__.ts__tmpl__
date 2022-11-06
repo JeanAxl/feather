@@ -1,0 +1,9 @@
+import { I<%= operationTypeCapitalized %> } from '@nestjs/cqrs';
+
+export type <%= operationNameCapitalized %><%= operationTypeCapitalized %>Payload = {};
+
+export class <%= operationNameCapitalized %><%= operationTypeCapitalized %> implements I<%= operationTypeCapitalized %> {
+  constructor(public readonly payload: <%= operationNameCapitalized %><%= operationTypeCapitalized %>Payload) {}
+}
+
+export type <%= operationNameCapitalized %><%= operationTypeCapitalized %>Result = void;

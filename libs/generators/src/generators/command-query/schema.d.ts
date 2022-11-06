@@ -1,5 +1,5 @@
 export interface CommandQueryGeneratorSchema {
-    name: string;
-    tags?: string;
-    directory?: string;
+  name: string;
+  type: string;
+  module: string;
 }
