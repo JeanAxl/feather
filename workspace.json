@@ -4,7 +4,6 @@
   "projects": {
     "backend": "apps/backend",
     "generators": "libs/generators",
-    "generators-e2e": "apps/generators-e2e",
     "lib-graphql": "libs/graphql",
     "webapp": "apps/webapp",
     "webapp-e2e": "apps/webapp-e2e"

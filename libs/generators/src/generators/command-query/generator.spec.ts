@@ -2,11 +2,11 @@ import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
 import generator from './generator';
-import { GeneratorsGeneratorSchema } from './schema';
+import { CommandQueryGeneratorSchema } from './schema';
 
-describe('generators generator', () => {
+describe('command-query generator', () => {
   let appTree: Tree;
-  const options: GeneratorsGeneratorSchema = { name: 'test' };
+  const options: CommandQueryGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();
