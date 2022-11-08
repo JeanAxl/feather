@@ -12,7 +12,8 @@
     "fb:shell": "firebase functions:shell",
     "fb:start": "npm run fb:shell",
     "fb:deploy": "firebase deploy --only functions",
-    "fb:logs": "firebase functions:log"
+    "fb:logs": "firebase functions:log",
+    "generate:cqrs": "yarn nx generate @feather/generators:command-query"
   },
   "private": true,
   "dependencies": {
