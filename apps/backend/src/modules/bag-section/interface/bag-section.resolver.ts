@@ -15,6 +15,7 @@ import {
   AddItemInBagSectionCommand,
   AddItemInBagSectionCommandResult,
 } from '../core/application/commands/add-item-in-bag-section/add-item-in-bag-section.command';
+import { DeleteBagSectionCommand } from '../core/application/commands/delete-bag-section/delete-bag-section.command';
 import {
   DeleteItemInBagSectionCommand,
   DeleteItemInBagSectionCommandResult,
@@ -115,7 +116,17 @@ export class BagSectionResolver {
 
     return true;
   }
+  @Mutation()
+  async DeleteBagSectionCommand(
+    @Args('bagSectionId') bagSectionId: string
+  ): Promise<GraphQLReturn<'deleteBagSection'>> {
+    await this.commandBus.execute<
+      DeleteBagSectionCommand,
+      DeleteItemInBagSectionCommandResult
+    >(new DeleteBagSectionCommand({ id: bagSectionId }));
 
+    return true;
+  }
   @Mutation()
   async updateItemInBagSection(
     @Args('input') input: UpdateItemInBagSectionInput
