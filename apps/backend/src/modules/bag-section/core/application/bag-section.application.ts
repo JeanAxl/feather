@@ -10,6 +10,7 @@ export const queryHandlers = [
   GetBagSectionQueryHandler,
   GetBagSectionsQueryHandler,
 ];
+
 export const commandHandlers = [
   UpdateBagSectionCommandHandler,
   DeleteItemInBagSectionCommandHandler,
