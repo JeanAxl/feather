@@ -5,14 +5,21 @@ import { Header } from './header';
 
 type Props = {
   bagSection: BagSection;
+  deleteBagSection: (id: BagSection['id']) => void;
 };
 
-export const TableHead: FunctionComponent<Props> = ({ bagSection }) => {
+export const TableHead: FunctionComponent<Props> = ({
+  bagSection,
+  deleteBagSection,
+}) => {
   return (
     <Thead>
       <Tr>
         <Th>
-          <Header bagSection={bagSection}></Header>
+          <Header
+            bagSection={bagSection}
+            deleteBagSection={deleteBagSection}
+          ></Header>
         </Th>
         <Th></Th>
         <Th isNumeric>Weight</Th>

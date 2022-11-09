@@ -15,6 +15,7 @@ type BagSectionProps = {
     input: Partial<ItemReadModel>
   ) => void;
   deleteItemInBag: (id: ItemReadModel['id']) => void;
+  deleteBagSection: (id: BagSection['id']) => void;
 };
 
 export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
@@ -22,6 +23,7 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
   addItemInBag,
   updateItemInBag,
   deleteItemInBag,
+  deleteBagSection,
 }) => {
   return (
     <Box
@@ -35,7 +37,10 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
     >
       <TableContainer>
         <Table variant="simple" size="sm">
-          <TableHead bagSection={bagSection} />
+          <TableHead
+            bagSection={bagSection}
+            deleteBagSection={deleteBagSection}
+          />
           <TableBody
             bagSectionContent={bagSection.getContent()}
             updateItemInBag={updateItemInBag}

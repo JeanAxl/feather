@@ -5,9 +5,13 @@ import { BagSection } from '../../../core/domain/bag.model';
 
 type Props = {
   bagSection: BagSection;
+  deleteBagSection: (id: BagSection['id']) => void;
 };
 
-export const Header: FunctionComponent<Props> = ({ bagSection }) => {
+export const Header: FunctionComponent<Props> = ({
+  bagSection,
+  deleteBagSection,
+}) => {
   return (
     <Flex>
       <Center>
@@ -15,7 +19,12 @@ export const Header: FunctionComponent<Props> = ({ bagSection }) => {
       </Center>
       <Spacer />
       <Box p="4" bg="">
-        <Button colorScheme="teal" variant="ghost" size="sm">
+        <Button
+          colorScheme="teal"
+          variant="ghost"
+          size="sm"
+          onClick={() => deleteBagSection(bagSection.getId())}
+        >
           <DeleteIcon />
         </Button>
       </Box>

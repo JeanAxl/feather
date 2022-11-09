@@ -14,6 +14,7 @@ type Props = {
   ) => void;
   deleteItemInBag: (id: ItemReadModel['id']) => void;
   addBagSection: () => void;
+  deleteBagSection: (id: BagSection['id']) => void;
 };
 export const BagSectionsComponent: FunctionComponent<Props> = ({
   bagSections,
@@ -21,6 +22,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
   updateItemInBag,
   deleteItemInBag,
   addBagSection,
+  deleteBagSection,
 }) => {
   return (
     <SimpleGrid columns={1} spacing={6}>
@@ -31,6 +33,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
           addItemInBag={addItemInBag}
           updateItemInBag={updateItemInBag}
           deleteItemInBag={deleteItemInBag}
+          deleteBagSection={deleteBagSection}
         />
       ))}
       <AddBagSection addBagSection={addBagSection} />
