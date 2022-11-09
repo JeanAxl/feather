@@ -117,7 +117,7 @@ export class BagSectionResolver {
     return true;
   }
   @Mutation()
-  async DeleteBagSectionCommand(
+  async deleteBagSection(
     @Args('bagSectionId') bagSectionId: string
   ): Promise<GraphQLReturn<'deleteBagSection'>> {
     await this.commandBus.execute<
