@@ -5,6 +5,7 @@ import { BagSection } from '../../../core/domain/bag-section.entity';
 import {
   AddBagSectionInput,
   BagSectionRepositoryPort,
+  DeleteBagSectionInput,
 } from '../../../core/domain/ports/bag-section-repositopry.port';
 import { BagSectionTypeOrmEntity } from './bag-section.typeorm-entity';
 
@@ -36,5 +37,8 @@ export class BagSectionRepositoryAdapter implements BagSectionRepositoryPort {
   public async addBagSection(input: AddBagSectionInput): Promise<void> {
     const bagSection = this.typeOrmRepository.create(input);
     await this.typeOrmRepository.save(bagSection);
+  }
+  public async delete(input: DeleteBagSectionInput): Promise<void> {
+    await this.typeOrmRepository.delete(input);
   }
 }

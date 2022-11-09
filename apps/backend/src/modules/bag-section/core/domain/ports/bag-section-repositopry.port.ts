@@ -2,6 +2,7 @@ import { BagSection } from '../bag-section.entity';
 
 export type UpdateBagSectionInput = Partial<BagSection>;
 export type AddBagSectionInput = NonNullable<Omit<BagSection, 'items'>>;
+export type DeleteBagSectionInput = BagSection['id'];
 export abstract class BagSectionRepositoryPort {
   public abstract getBagSection(
     id: BagSection['id']
@@ -15,4 +16,5 @@ export abstract class BagSectionRepositoryPort {
   ): Promise<void>;
 
   public abstract addBagSection(input: AddBagSectionInput): Promise<void>;
+  public abstract delete(input: DeleteBagSectionInput): Promise<void>;
 }
