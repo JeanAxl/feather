@@ -15,14 +15,12 @@ import {
 import { FunctionComponent } from 'react';
 import { BagSection } from '../../../core/domain/bag.model';
 import { ItemReadModel } from '../../../core/domain/item.model';
+import { DeleteItemInBagFn, UpdateItemInBagFn } from '../../interface';
 
 type Props = {
   bagSectionContent: BagSection['items'];
-  updateItemInBag: (
-    id: ItemReadModel['id'],
-    input: Partial<ItemReadModel>
-  ) => void;
-  deleteItemInBag: (id: ItemReadModel['id']) => void;
+  updateItemInBag: UpdateItemInBagFn;
+  deleteItemInBag: DeleteItemInBagFn;
 };
 
 export const TableBody: FunctionComponent<Props> = ({
@@ -86,10 +84,7 @@ export const TableBody: FunctionComponent<Props> = ({
 type EditableCellProps = {
   item: ItemReadModel;
   attribute: 'name' | 'description';
-  updateItemInBag: (
-    id: ItemReadModel['id'],
-    input: Partial<ItemReadModel>
-  ) => void;
+  updateItemInBag: UpdateItemInBagFn;
 };
 
 const EditableCell: FunctionComponent<EditableCellProps> = ({
@@ -113,10 +108,7 @@ const EditableCell: FunctionComponent<EditableCellProps> = ({
 type EditableNumberCellProps = {
   item: ItemReadModel;
   attribute: 'weight' | 'quantity';
-  updateItemInBag: (
-    id: ItemReadModel['id'],
-    input: Partial<ItemReadModel>
-  ) => void;
+  updateItemInBag: UpdateItemInBagFn;
 };
 
 const EditableNumberCell: FunctionComponent<EditableNumberCellProps> = ({

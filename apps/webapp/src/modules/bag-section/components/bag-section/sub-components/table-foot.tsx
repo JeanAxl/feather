@@ -1,12 +1,12 @@
 import { Button, Tfoot, Th, Tr } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 import * as uuid from 'uuid';
-import { ItemWriteModel } from '../../../core/domain/item.model';
+import { AddItemInBagSectionFn } from '../../interface';
 type Props = {
   bagSectionTotalWeight: number;
   bagSectionTotalItems: number;
   bagSectionId: string;
-  addItemInBag: (item: ItemWriteModel) => void;
+  addItemInBag: AddItemInBagSectionFn;
 };
 
 export const TableFoot: FunctionComponent<Props> = ({

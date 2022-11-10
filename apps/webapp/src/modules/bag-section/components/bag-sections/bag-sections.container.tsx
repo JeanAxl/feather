@@ -4,6 +4,7 @@ import { useAddBagSection } from '../../hooks/mutations/useAddBagSection.hook';
 import { useAddItemInBagSection } from '../../hooks/mutations/useAddItemInBagSection.hook';
 import { useDeleteBagSection } from '../../hooks/mutations/useDeleteBagSection.hook';
 import { useDeleteItemInBagSection } from '../../hooks/mutations/useDeleteItemInBagSection.hook';
+import { useUpdateBagSection } from '../../hooks/mutations/useUpdateBagSection.hook';
 import { useUpdateInBagSection } from '../../hooks/mutations/useUpdateItemInBagSection.hook';
 import { useGetBagSections } from '../../hooks/queries/useGetBagSections.hook';
 import { BagSectionsComponent } from './bag-sections.presentation';
@@ -15,6 +16,7 @@ export const BagSectionsContainer: FunctionComponent = () => {
   const { deleteItemInBagSection } = useDeleteItemInBagSection();
   const { addBagSection } = useAddBagSection();
   const { deleteBagSection } = useDeleteBagSection();
+  const { updateBagSection } = useUpdateBagSection();
   if (isLoading) {
     return <Loader />;
   }
@@ -31,6 +33,7 @@ export const BagSectionsContainer: FunctionComponent = () => {
       deleteItemInBag={deleteItemInBagSection}
       addBagSection={addBagSection}
       deleteBagSection={deleteBagSection}
+      updateBagSection={updateBagSection}
     ></BagSectionsComponent>
   );
 };

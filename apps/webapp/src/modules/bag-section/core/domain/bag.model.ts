@@ -37,6 +37,10 @@ export class BagSection {
   }
 }
 
+export type BagSectionWriteModel = {
+  name: string;
+};
+
 export const bagSectionFixtureFactory = (): BagSection => {
   return new BagSection('1', 'couchage', [
     {

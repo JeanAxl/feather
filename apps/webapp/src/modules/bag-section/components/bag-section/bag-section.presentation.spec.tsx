@@ -10,7 +10,8 @@ describe('BagSectionPresentation', () => {
   const addItem = jest.fn();
   const updateItem = jest.fn();
   const deleteItem = jest.fn();
-
+  const deleteBagSection = jest.fn();
+  const updateBagSection = jest.fn();
   it('should render', () => {
     const { baseElement } = render(
       <BagSectionComponent
@@ -18,6 +19,8 @@ describe('BagSectionPresentation', () => {
         addItemInBag={addItem}
         updateItemInBag={updateItem}
         deleteItemInBag={deleteItem}
+        deleteBagSection={deleteBagSection}
+        updateBagSection={updateBagSection}
       />
     );
     expect(baseElement).toBeTruthy();
@@ -30,10 +33,13 @@ describe('BagSectionPresentation', () => {
         addItemInBag={addItem}
         updateItemInBag={updateItem}
         deleteItemInBag={deleteItem}
+        deleteBagSection={deleteBagSection}
+        updateBagSection={updateBagSection}
       />
     );
 
     const element = await findByText(bagSection.getName());
+
     expect(element).toBeTruthy();
   });
 
@@ -44,6 +50,8 @@ describe('BagSectionPresentation', () => {
         addItemInBag={addItem}
         updateItemInBag={updateItem}
         deleteItemInBag={deleteItem}
+        deleteBagSection={deleteBagSection}
+        updateBagSection={updateBagSection}
       />
     );
 

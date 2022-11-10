@@ -1,21 +1,27 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 import { BagSection } from '../../core/domain/bag.model';
-import { ItemReadModel, ItemWriteModel } from '../../core/domain/item.model';
 import { BagSectionComponent } from '../bag-section/bag-section.presentation';
 import { AddBagSection } from '../bag-section/sub-components/add-bag-section';
+import {
+  AddBagSectionFn,
+  AddItemInBagSectionFn,
+  DeleteBagSectionFn,
+  DeleteItemInBagFn,
+  UpdateBagSectionFn,
+  UpdateItemInBagFn,
+} from '../interface';
 
 type Props = {
   bagSections: BagSection[];
-  addItemInBag: (item: ItemWriteModel) => void;
-  updateItemInBag: (
-    id: ItemReadModel['id'],
-    input: Partial<ItemReadModel>
-  ) => void;
-  deleteItemInBag: (id: ItemReadModel['id']) => void;
-  addBagSection: () => void;
-  deleteBagSection: (id: BagSection['id']) => void;
+  addItemInBag: AddItemInBagSectionFn;
+  updateItemInBag: UpdateItemInBagFn;
+  deleteItemInBag: DeleteItemInBagFn;
+  addBagSection: AddBagSectionFn;
+  deleteBagSection: DeleteBagSectionFn;
+  updateBagSection: UpdateBagSectionFn;
 };
+
 export const BagSectionsComponent: FunctionComponent<Props> = ({
   bagSections,
   addItemInBag,
@@ -23,6 +29,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
   deleteItemInBag,
   addBagSection,
   deleteBagSection,
+  updateBagSection,
 }) => {
   return (
     <SimpleGrid columns={1} spacing={6}>
@@ -34,6 +41,7 @@ export const BagSectionsComponent: FunctionComponent<Props> = ({
           updateItemInBag={updateItemInBag}
           deleteItemInBag={deleteItemInBag}
           deleteBagSection={deleteBagSection}
+          updateBagSection={updateBagSection}
         />
       ))}
       <AddBagSection addBagSection={addBagSection} />

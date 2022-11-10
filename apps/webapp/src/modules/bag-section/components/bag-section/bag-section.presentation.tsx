@@ -2,20 +2,23 @@ import { Box, Table, TableContainer } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
 
 import { BagSection } from '../../core/domain/bag.model';
-import { ItemReadModel, ItemWriteModel } from '../../core/domain/item.model';
+import {
+  AddItemInBagSectionFn,
+  DeleteBagSectionFn,
+  UpdateBagSectionFn,
+  UpdateItemInBagFn,
+} from '../interface';
 import { TableBody } from './sub-components/table-body';
 import { TableFoot } from './sub-components/table-foot';
 import { TableHead } from './sub-components/table-head';
 
 type BagSectionProps = {
   bagSection: BagSection;
-  addItemInBag: (item: ItemWriteModel) => void;
-  updateItemInBag: (
-    id: ItemReadModel['id'],
-    input: Partial<ItemReadModel>
-  ) => void;
-  deleteItemInBag: (id: ItemReadModel['id']) => void;
-  deleteBagSection: (id: BagSection['id']) => void;
+  addItemInBag: AddItemInBagSectionFn;
+  updateItemInBag: UpdateItemInBagFn;
+  deleteItemInBag: DeleteBagSectionFn;
+  deleteBagSection: DeleteBagSectionFn;
+  updateBagSection: UpdateBagSectionFn;
 };
 
 export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
@@ -24,6 +27,7 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
   updateItemInBag,
   deleteItemInBag,
   deleteBagSection,
+  updateBagSection,
 }) => {
   return (
     <Box
@@ -40,6 +44,7 @@ export const BagSectionComponent: FunctionComponent<BagSectionProps> = ({
           <TableHead
             bagSection={bagSection}
             deleteBagSection={deleteBagSection}
+            updateBagSection={updateBagSection}
           />
           <TableBody
             bagSectionContent={bagSection.getContent()}
