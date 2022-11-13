@@ -1,9 +1,10 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Button, Center } from '@chakra-ui/react';
 import { FunctionComponent } from 'react';
+import { AddBagSectionFn } from '../../interface';
 
 type Props = {
-  addBagSection: () => void;
+  addBagSection: AddBagSectionFn;
 };
 
 export const AddBagSection: FunctionComponent<Props> = ({ addBagSection }) => {
