@@ -24,7 +24,14 @@ export class BagSectionRepositoryAdapter implements BagSectionRepositoryPort {
   }
 
   public async getBagSections(): Promise<BagSection[]> {
-    return this.typeOrmRepository.find({ relations: ['items'] });
+    const typeOrmEntities = await this.typeOrmRepository.find({
+      relations: ['items', 'items.unit'],
+    });
+
+    return typeOrmEntities.map((typeOrmEntity) => ({
+      ...typeOrmEntity,
+      items: typeOrmEntity.items.map((itemTypeOrmEntity) => itemTypeOrmEntity),
+    }));
   }
 
   public async updateBagSection(
