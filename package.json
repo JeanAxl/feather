@@ -6,6 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "back":"yarn start backend",
+    "front": "yarn start webapp",
     "generate-graphql": "nx generate-gql-types backend",
     "fb:build": "",
     "fb:serve": "firebase serve --only functions",
